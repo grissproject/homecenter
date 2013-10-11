@@ -43,8 +43,9 @@ img {
 #navigation, #footer {
   background: url(bg-strips.png) repeat-x;
 }
-#navigation #secondary li:first-child a, #connect li a {
-  background: url(icons.png) no-repeat;
+/*#navigation #secondary li:first-child a, #connect li a {*/
+#connect li a {
+   background: url(icons.png) no-repeat; 
 }
 #adbox a.button,#search .button, #stocks ul li a.preview span.icon, #checkout table tr td a.plus, #checkout table tr td a.minus {
   background: url(buttons.png) no-repeat;
@@ -113,21 +114,38 @@ img {
 }
 #navigation ul#secondary {
 *width: 254px;/** Needed for IE7 **/
+  float: right;
 }
 #navigation #secondary li:first-child {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 #navigation ul#secondary li:first-child a {
-  background-position: right 0;
-  padding-right: 48px;
+  background-position: center 0;
+  padding-right: 5px;
+  text-transform: capitalize;
+  font-size: 14px;
 }
 #navigation ul#secondary li:first-child a:hover {
-  padding-top: 0;
+  /* padding-top: 0; */
 }
 /*------------------------------ CONTENTS ------------------------------*/
 #contents {
   margin: 0 0 60px;
+  padding: 0 20px;
+  color: #606c84;
+  font-family: 'Trebuchet MS';
+  font-size: 14px;
+  line-height: 24px;
 }
+
+#contents a {
+  color: #606c84;
+}
+
+#contents a:hover {
+  color: #91a4ce;
+}
+
 #contents h4 {
   background: url(separator-horizontal.png) no-repeat center center;
   color: #fbfdf8;
@@ -236,7 +254,7 @@ img {
 ul.items {
   display: inline-block;
   list-style: none;
-  margin: 0 25px;
+  margin: 0 5px;
   padding: 0;
 }
 ul.items li {

@@ -17,11 +17,11 @@
         </div>
         <div id="navigation">
           <ul id="primary">
-            <li class="selected">
-              <a href="index.html">Home</a>
+            <li>
+              <%= link_to "Inicio", home_index_path %>
             </li>
             <li>
-              <a href="new.html">New Arrivals</a>
+              <%= link_to "Productos", productos_path %>
             </li>
             <li>
               <a href="mens.html">Mens</a>
@@ -37,12 +37,21 @@
             </li>
           </ul>
           <ul id="secondary">
+            <%
+            if user_signed_in?
+            %>
+              <li style="font-size: 15px;">
+                <%= current_user.nombre + ' ' + current_user.apellido %>
+                <span>(<%= link_to "Salir", destroy_user_session_path, :method => :delete %>)</span>
+              </li>
+            <%
+            else
+            %>
             <li>
-              <a href="checkout.html">Cart</a>
+              <%= link_to "Iniciar sesion", new_user_session_path %> | 
+              <%= link_to "Registrarse", new_user_registration_path %>
             </li>
-            <li>
-              <a href="index.html">Login</a> | <a href="index.html">Signup</a>
-            </li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -55,13 +64,13 @@
             <h5>Get Social With us!</h5>
             <ul>
               <li>
-                <a href="http://freewebsitetemplates.com/go/facebook/" target="_blank" class="facebook"></a>
+                <a href="#" target="_blank" class="facebook"></a>
               </li>
               <li>
-                <a href="http://freewebsitetemplates.com/go/twitter/" target="_blank" class="twitter"></a>
+                <a href="#" target="_blank" class="twitter"></a>
               </li>
               <li>
-                <a href="http://www.freewebsitetemplates.com/go/googleplus/" target="_blank" class="linkin"></a>
+                <a href="#" target="_blank" class="linkin"></a>
               </li>
             </ul>
           </div>
@@ -84,7 +93,7 @@
             </li>
           </ul>
           <p class="footnote">
-            &copy; Copyirght &copy; 2011. <a href="index.html">Company name</a> all rights reserved.
+            &copy; Copyirght &copy; 2013. <%= link_to "Home Center", home_index_path %> Todos los derechos reservados.
           </p>
         </div>
       </div>
