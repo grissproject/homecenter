@@ -1,30 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Nombre:</b>
-  <%= @producto.nombre %>
-</p>
+<div style="float: left; margin-right: 30px;">
+  <%= image_tag @producto.imagen.url(:medium) %>
+</div>
 
-<p>
-  <b>Descripcion:</b>
-  <%= @producto.descripcion %>
-</p>
+<div style="float: left;">
+  <p>
+    <b>Nombre:</b>
+    <%= @producto.nombre %>
+  </p>
 
-<p>
-  <b>Codigo:</b>
-  <%= @producto.codigo %>
-</p>
+  <p>
+    <b>Descripcion:</b>
+    <%= @producto.descripcion %>
+  </p>
 
-<p>
-  <b>Stock:</b>
-  <%= @producto.stock %>
-</p>
+  <p>
+    <b>Codigo:</b>
+    <%= @producto.codigo %>
+  </p>
 
-<p>
-  <b>Categoria:</b>
-  <%= @producto.categoria %>
-</p>
+  <p>
+    <b>Stock:</b>
+    <%= @producto.stock %>
+  </p>
+
+  <p>
+    <b>Categoria:</b>
+    <%= @producto.categorium.nombre %>
+  </p>
+</div>
+
+<div class="clear"></div>
 
 
-<%= link_to 'Edit', edit_producto_path(@producto) %> |
-<%= link_to 'Back', productos_path %>
+<%= link_to 'Editar', edit_producto_path(@producto) %> |
+<%= link_to 'Volver', productos_path %>

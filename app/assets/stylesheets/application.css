@@ -348,7 +348,8 @@ ul.items li a span {
   background-color: #c7eeef;
 }
 #stocks ul li span {
-  float: right;
+  /* float: right; */
+  display: block;
   color: #e3b612;
 }
 #stocks .btn-cart {
@@ -362,7 +363,7 @@ ul.items li a span {
 #stocks ul li a.preview {
   background-color: transparent;
   display: block;
-  height: 171px;
+  /* height: 171px; */
   width: 171px;
   padding: 0;
 }
@@ -373,7 +374,7 @@ ul.items li a span {
   width: 15px;
   padding: 0;
   position: absolute;
-  top: 156px;
+  top: 5px;
   right: 0;
 }
 /*------------------------------ checkout page ------------------------------*/
@@ -665,3 +666,9 @@ ul.items li a span {
   filter:alpha(opacity=80);
   opacity:0.8;
 }
+
+/**
+ * Common tags
+ */
+.clear { clear: both; }
+.alignright { float: right; }

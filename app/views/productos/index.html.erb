@@ -1,31 +1,20 @@
-<h1>Listing productos</h1>
+<div class="alignright">
+  <%= link_to 'Nuevo Producto', new_producto_path %> |
+  <%= link_to 'Nueva Categoria', new_categorium_path %>
+</div>
+<h1>Productos</h1>
 
-<table>
-  <tr>
-    <th>Nombre</th>
-    <th>Descripcion</th>
-    <th>Codigo</th>
-    <th>Stock</th>
-    <th>Categoria</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @productos.each do |producto| %>
-  <tr>
-    <td><%= producto.nombre %></td>
-    <td><%= producto.descripcion %></td>
-    <td><%= producto.codigo %></td>
-    <td><%= producto.stock %></td>
-    <td><%= producto.categoria %></td>
-    <td><%= link_to 'Show', producto %></td>
-    <td><%= link_to 'Edit', edit_producto_path(producto) %></td>
-    <td><%= link_to 'Destroy', producto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Producto', new_producto_path %>
+<div id="stocks">
+  <ul>
+    <% @productos.each do |producto| %>
+    <li class="stock-item">
+      <%= link_to "#{image_tag producto.imagen.url(:thumb)}<span class='icon'></span>".html_safe, producto, :class => 'preview' %>
+      <%= producto.nombre %>
+      <span><%= producto.stock %> unidades</span>
+      <em><%= producto.descripcion %></em>
+      <a href="checkout.php" class="btn-cart">+ Premios</a>
+      <a href="checkout.php" class="btn-wish">+ Novios</a>
+    </li>
+    <% end %>
+  </ul>
+</div>
