@@ -1,4 +1,7 @@
 class CategoriaController < ApplicationController
+
+  before_filter :authenticate_user!
+
   # GET /categoria
   # GET /categoria.json
   def index
