@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nombre_novio: MyString
+  nombre_novia: MyString
+  fecha: 2013-11-08 02:06:51
+  texto_invitacion: MyText
+  direccion: MyText
+  user: 
+
+two:
+  nombre_novio: MyString
+  nombre_novia: MyString
+  fecha: 2013-11-08 02:06:51
+  texto_invitacion: MyText
+  direccion: MyText
+  user: 

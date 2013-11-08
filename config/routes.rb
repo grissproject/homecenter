@@ -1,4 +1,7 @@
 Tesis::Application.routes.draw do
+  resources :revista_novios
+
+
   get "home/index"
 
   devise_for :users

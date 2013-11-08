@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131107214221) do
+ActiveRecord::Schema.define(:version => 20131108082619) do
 
   create_table "categoria", :force => true do |t|
     t.string   "nombre"
@@ -36,6 +36,32 @@ ActiveRecord::Schema.define(:version => 20131107214221) do
   end
 
   add_index "productos", ["categoria_id"], :name => "index_productos_on_categoria_id"
+
+  create_table "productos_revista_novios", :id => false, :force => true do |t|
+    t.integer "producto_id"
+    t.integer "revista_novio_id"
+  end
+
+  create_table "revista_novios", :force => true do |t|
+    t.string   "nombre_novio"
+    t.string   "nombre_novia"
+    t.datetime "fecha"
+    t.text     "texto_invitacion"
+    t.text     "direccion"
+    t.integer  "user_id"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.string   "foto_novio_file_name"
+    t.string   "foto_novio_content_type"
+    t.integer  "foto_novio_file_size"
+    t.datetime "foto_novio_updated_at"
+    t.string   "foto_novia_file_name"
+    t.string   "foto_novia_content_type"
+    t.integer  "foto_novia_file_size"
+    t.datetime "foto_novia_updated_at"
+  end
+
+  add_index "revista_novios", ["user_id"], :name => "index_revista_novios_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
