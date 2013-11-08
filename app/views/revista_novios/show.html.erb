@@ -41,16 +41,23 @@
   </div>
 
   <div id="stocks">
+
     <ul>
       <% @revista_novio.productos.each do |producto| %>
       <li class="stock-item">
         <%= link_to "#{image_tag producto.imagen.url(:thumb)}<span class='icon'></span>".html_safe, producto, :class => 'preview' %>
         <%= producto.nombre %>
         <em><%= producto.descripcion %></em>
+        <div class="total">Total: <%= producto.precio %> Bs.</div>
+        <div class="total">
+          Regalado: 
+          <%= CompraRegaloNovio.sum(:monto, :conditions => "revista_novio_id = '#{@revista_novio.id}' AND producto_id = '#{producto.id}'") %> Bs.</div>
       </li>
       <% end %>
     </ul>
   </div>
 </div>
 
-<%= link_to 'Editar', edit_revista_novio_path(@revista_novio) %>
+<% if current_user.id == @revista_novio.user_id %>
+  <%= link_to 'Editar', edit_revista_novio_path(@revista_novio) %>
+<% end %>

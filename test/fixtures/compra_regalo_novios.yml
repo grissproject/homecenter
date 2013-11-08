@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  revista_novio: 
+  producto: 
+  monto: 1.5
+  user: 
+
+two:
+  revista_novio: 
+  producto: 
+  monto: 1.5
+  user: 

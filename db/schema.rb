@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131108082619) do
+ActiveRecord::Schema.define(:version => 20131108150651) do
 
   create_table "categoria", :force => true do |t|
     t.string   "nombre"
@@ -19,6 +19,19 @@ ActiveRecord::Schema.define(:version => 20131108082619) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "compra_regalo_novios", :force => true do |t|
+    t.integer  "revista_novio_id"
+    t.integer  "producto_id"
+    t.float    "monto"
+    t.integer  "user_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "compra_regalo_novios", ["producto_id"], :name => "index_compra_regalo_novios_on_producto_id"
+  add_index "compra_regalo_novios", ["revista_novio_id"], :name => "index_compra_regalo_novios_on_revista_novio_id"
+  add_index "compra_regalo_novios", ["user_id"], :name => "index_compra_regalo_novios_on_user_id"
 
   create_table "productos", :force => true do |t|
     t.string   "nombre"
@@ -33,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20131108082619) do
     t.integer  "imagen_file_size"
     t.datetime "imagen_updated_at"
     t.boolean  "novios"
+    t.float    "precio"
   end
 
   add_index "productos", ["categoria_id"], :name => "index_productos_on_categoria_id"
