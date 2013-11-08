@@ -1,45 +1,56 @@
+<link href='http://fonts.googleapis.com/css?family=Engagement' rel='stylesheet' type='text/css'>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Nombre novio:</b>
-  <%= @revista_novio.nombre_novio %>
-  <%= image_tag @revista_novio.foto_novio.url(:medium) %>
-</p>
+<div id="pink-heart">
+  <div id="titulo">
+    Mi Boda
+  </div>
+  <div class="novio">
+    <div class="foto">
+      <%= image_tag @revista_novio.foto_novio.url(:thumb) %>
+    </div>
+    <div class="nombre">
+      <%= @revista_novio.nombre_novio %>
+    </div>
+  </div>
 
-<p>
-  <b>Nombre novia:</b>
-  <%= @revista_novio.nombre_novia %>
-  <%= image_tag @revista_novio.foto_novia.url(:medium) %>
-</p>
+  <div class="novio novia">
+    <div class="foto">
+      <%= image_tag @revista_novio.foto_novia.url(:thumb) %>
+    </div>
+    <div class="nombre">
+      <%= @revista_novio.nombre_novia %>
+    </div>
+  </div>
 
-<p>
-  <b>Fecha:</b>
-  <%= @revista_novio.fecha %>
-</p>
+  <div id="textos">
+    <div id="texto_invitacion">
+      <%= @revista_novio.texto_invitacion %>
+    </div>
 
-<p>
-  <b>Texto invitacion:</b>
-  <%= @revista_novio.texto_invitacion %>
-</p>
+    <div id="fecha">
+      <span class="title">Fecha:</span>
+      <%= @revista_novio.fecha %>
+    </div>
 
-<p>
-  <b>Direccion:</b>
-  <%= @revista_novio.direccion %>
-</p>
+    <div id="direccion">
+      <span class="title">Direccion:</span>
+      <%= @revista_novio.direccion %>
+    </div>
+  </div>
 
-<div id="stocks">
-  <ul>
-    <% @revista_novio.productos.each do |producto| %>
-    <li class="stock-item">
-      <%= link_to "#{image_tag producto.imagen.url(:thumb)}<span class='icon'></span>".html_safe, producto, :class => 'preview' %>
-      <%= producto.nombre %>
-      <span><%= producto.stock %> unidades</span>
-      <em><%= producto.descripcion %></em>
-      <a href="checkout.php" class="btn-cart">+ Premios</a>
-      <a href="checkout.php" class="btn-wish">+ Novios</a>
-    </li>
-    <% end %>
-  </ul>
+  <div id="stocks">
+    <ul>
+      <% @revista_novio.productos.each do |producto| %>
+      <li class="stock-item">
+        <%= link_to "#{image_tag producto.imagen.url(:thumb)}<span class='icon'></span>".html_safe, producto, :class => 'preview' %>
+        <%= producto.nombre %>
+        <em><%= producto.descripcion %></em>
+      </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
 
 <%= link_to 'Editar', edit_revista_novio_path(@revista_novio) %>

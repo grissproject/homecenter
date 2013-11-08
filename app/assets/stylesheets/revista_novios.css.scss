@@ -5,4 +5,14 @@
 /**
  * Revista Templates
  */
-#pink-heart {  }
+#pink-heart { background: url(bgs/pink-heart.jpg); color: #333; font-size: 19px; }
+#pink-heart #titulo { font-family: 'Engagement', cursive; font-size: 68px; text-align: center; padding-top: 60px; }
+#pink-heart .novio { float: left; margin-top: 100px; margin-left: 150px; }
+#pink-heart .novia { margin-left: 250px; }
+#pink-heart .nombre { font-size: 22px; }
+#pink-heart #textos { clear: both; padding: 50px; margin-top: 20px; }
+#pink-heart .title { font-size: 14px; font-weight: bold; }
+#pink-heart #fecha { color: #555; }
+#pink-heart #direccion { color: #555; }
+#pink-heart #stocks { border-top: 2px dashed #CCC; padding-top: 10px; }
+#pink-heart .stock-item { background-color: #FFF; padding: 3px; margin: 0 45px 60px 0; }
