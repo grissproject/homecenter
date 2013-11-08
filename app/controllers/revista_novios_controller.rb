@@ -32,6 +32,7 @@ class RevistaNoviosController < ApplicationController
   # GET /revista_novios/new.json
   def new
     @revista_novio = RevistaNovio.new
+    @revista_novio.titulo ||= 'Mi Boda'
 
     respond_to do |format|
       format.html # new.html.erb
