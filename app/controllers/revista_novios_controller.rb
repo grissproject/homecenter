@@ -1,6 +1,6 @@
 class RevistaNoviosController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:show]
 
   # GET /revista_novios
   # GET /revista_novios.json

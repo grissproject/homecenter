@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131108160846) do
+ActiveRecord::Schema.define(:version => 20131108161431) do
 
   create_table "categoria", :force => true do |t|
     t.string   "nombre"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20131108160846) do
     t.integer  "foto_novia_file_size"
     t.datetime "foto_novia_updated_at"
     t.string   "titulo"
+    t.string   "estilo"
   end
 
   add_index "revista_novios", ["user_id"], :name => "index_revista_novios_on_user_id"

@@ -37,6 +37,29 @@
   </div>
 
   <div class="clear"></div>
+
+  <div class="form_row">
+    <label for="estilo">Estilo:</label>
+    <br>
+    <div class="estilo_item">
+      <%= f.radio_button :estilo, 'pink-heart' %> Pink Heart
+      <%= image_tag 'bgs/pink-heart.jpg'%>
+    </div>
+    <div class="estilo_item">
+      <%= f.radio_button :estilo, 'cute-love' %> Cute Love
+      <%= image_tag 'bgs/cute-love.jpg'%>
+    </div>
+    <div class="estilo_item">
+      <%= f.radio_button :estilo, 'autentico' %> Autentico
+      <%= image_tag 'bgs/autentico.jpg'%>
+    </div>
+    <div class="estilo_item">
+      <%= f.radio_button :estilo, 'minimal' %> Minimal
+      <%= image_tag 'bgs/minimal.png'%>
+    </div>
+  </div>
+
+  <div class="clear"></div>
   <hr />
 
   <h2>Lista de Regalos</h2>

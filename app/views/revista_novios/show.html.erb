@@ -2,7 +2,7 @@
 
 <p id="notice"><%= notice %></p>
 
-<div id="pink-heart">
+<div id="<%= @revista_novio.estilo %>">
   <div id="titulo">
     <%= @revista_novio.titulo %>
   </div>
@@ -58,6 +58,45 @@
   </div>
 </div>
 
-<% if current_user.id == @revista_novio.user_id %>
-  <%= link_to 'Editar', edit_revista_novio_path(@revista_novio) %>
+<div id="mail_invitation">
+  Mails: &nbsp; <input type="text" value="" /><br />
+  Asunto: <input type="text" value="<%= @revista_novio.titulo %>" /><br />
+  Mensaje: <br /><textarea rows=6 cols=50><%= @revista_novio.texto_invitacion %></textarea><br />
+  <input type="button" value="Enviar" />
+</div>
+
+<% if current_user && current_user.id == @revista_novio.user_id %>
+  <%= link_to 'Editar', edit_revista_novio_path(@revista_novio) %> |
+  <span onclick="mostrar_envio_mail()" style="text-decoration: underline; cursor: pointer;">Enviar Invitaciones</span>
 <% end %>
+
+<script type="text/javascript">
+function mostrar_envio_mail() {
+    $('#mail_invitation').center();
+    $("#mail_invitation").show();
+}
+/**
+ * Oscurece la pagina entera
+ */
+function oscurecer_pagina() {
+    $('body').append('<div id="screen_black" style="position: absolute; left: 0; top: 0; background: #000;"></div>');
+    $('#screen_black').css({ opacity: 0.7, 'width':$(document).width(),'height':$(document).height()});
+    $('body').css({'overflow':'hidden'});
+}
+/**
+ * NO Oscurece la pagina entera
+ */
+function no_oscurecer_pagina() {
+    $('#screen_black').remove();
+    $('body').css({'overflow':'visible'});
+}
+
+jQuery.fn.center = function () {
+    this.css("position","absolute");
+    this.css("top", Math.max(0, (($(window).height() - this.outerHeight()) / 2) + 
+                                                $(window).scrollTop()) + "px");
+    this.css("left", Math.max(0, (($(window).width() - this.outerWidth()) / 2) + 
+                                                $(window).scrollLeft()) + "px");
+    return this;
+}
+</script>
