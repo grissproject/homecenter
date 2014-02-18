@@ -2,6 +2,11 @@
 
 <p id="notice"><%= notice %></p>
 
+<% if current_user && current_user.id == @revista_novio.user_id %>
+  <%= link_to 'Editar Revista', edit_revista_novio_path(@revista_novio) %> |
+  <span onclick="mostrar_envio_mail()" style="text-decoration: underline; cursor: pointer;">Enviar Invitaciones</span>
+<% end %>
+
 <div id="<%= @revista_novio.estilo %>">
   <div id="titulo">
     <%= @revista_novio.titulo %>
@@ -64,11 +69,6 @@
   Mensaje: <br /><textarea rows=6 cols=50><%= @revista_novio.texto_invitacion %></textarea><br />
   <input type="button" value="Enviar" />
 </div>
-
-<% if current_user && current_user.id == @revista_novio.user_id %>
-  <%= link_to 'Editar', edit_revista_novio_path(@revista_novio) %> |
-  <span onclick="mostrar_envio_mail()" style="text-decoration: underline; cursor: pointer;">Enviar Invitaciones</span>
-<% end %>
 
 <script type="text/javascript">
 function mostrar_envio_mail() {
