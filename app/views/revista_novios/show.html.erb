@@ -64,7 +64,8 @@
 </div>
 
 <div id="mail_invitation">
-  Mails: &nbsp; <input type="text" value="" /><br />
+  <div id="close_btn" onclick="$('#mail_invitation').hide();"></div>
+  Mails: &nbsp; <input type="text" value="" size="30"/><br />
   Asunto: <input type="text" value="<%= @revista_novio.titulo %>" /><br />
   Mensaje: <br /><textarea rows=6 cols=50><%= @revista_novio.texto_invitacion %></textarea><br />
   <input type="button" value="Enviar" />
