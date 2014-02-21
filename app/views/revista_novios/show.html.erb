@@ -55,8 +55,16 @@
         <em><%= producto.descripcion %></em>
         <div class="total">Total: <%= producto.precio %> Bs.</div>
         <div class="total">
+          <% regalado = CompraRegaloNovio.sum(:monto, :conditions => "revista_novio_id = '#{@revista_novio.id}' AND producto_id = '#{producto.id}'") %>
           Regalado: 
-          <%= CompraRegaloNovio.sum(:monto, :conditions => "revista_novio_id = '#{@revista_novio.id}' AND producto_id = '#{producto.id}'") %> Bs.</div>
+          <%= regalado %> Bs.</div>
+          <div>
+            <div class="barra_regalado_bg">
+              <% percentage = (regalado / producto.precio) * 100;  %>
+              <div class="barra_regalado" style="width: <%= percentage.ceil %>%"></div>
+            </div>
+            <div class="barra_regalado_text"><%= percentage.ceil %>%</div>
+          </div>
       </li>
       <% end %>
     </ul>

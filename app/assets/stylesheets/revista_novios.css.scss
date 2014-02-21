@@ -4,6 +4,9 @@
 
 .estilo_item { width: 150px; float: left; margin-left: 15px; }
 .estilo_item img { width: 100%; }
+.barra_regalado_bg { width: 75%; height: 5px; padding: 0; background-color: #CCC; float: left; margin-top: 8px; }
+.barra_regalado { height: 5px; padding: 0; background-color: green; }
+.barra_regalado_text { float: right; width: 23%; margin: 0; font-size: 0.9em; }
 #mail_invitation { display: none; background-color: #FFF; border: 5px solid #CCC; padding: 20px; position: relative; }
 #mail_invitation #close_btn { position: absolute; top: 0; right: 10px; background: url(close.png); width: 16px; height: 16px; cursor: pointer; }
 
