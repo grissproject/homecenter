@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131108161431) do
+ActiveRecord::Schema.define(:version => 20140218131550) do
 
   create_table "categoria", :force => true do |t|
     t.string   "nombre"
@@ -55,6 +55,21 @@ ActiveRecord::Schema.define(:version => 20131108161431) do
     t.integer "producto_id"
     t.integer "revista_novio_id"
   end
+
+  create_table "reserva_regalo_novios", :force => true do |t|
+    t.float    "monto"
+    t.boolean  "activo"
+    t.text     "mensaje"
+    t.integer  "revista_novio_id"
+    t.integer  "producto_id"
+    t.integer  "user_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "reserva_regalo_novios", ["producto_id"], :name => "index_reserva_regalo_novios_on_producto_id"
+  add_index "reserva_regalo_novios", ["revista_novio_id"], :name => "index_reserva_regalo_novios_on_revista_novio_id"
+  add_index "reserva_regalo_novios", ["user_id"], :name => "index_reserva_regalo_novios_on_user_id"
 
   create_table "revista_novios", :force => true do |t|
     t.string   "nombre_novio"

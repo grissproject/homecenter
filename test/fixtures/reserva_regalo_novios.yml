@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  monto: 1.5
+  activo: false
+  mensaje: MyText
+  revista_novio: 
+  producto: 
+  user: 
+
+two:
+  monto: 1.5
+  activo: false
+  mensaje: MyText
+  revista_novio: 
+  producto: 
+  user: 
