@@ -1,0 +1,34 @@
+<style type="text/css">
+  th, td { border: 1px solid #CCC; }
+</style>
+<h1>Reservas realizadas</h1>
+
+<table>
+  <tr>
+    <th>Novios</th>
+    <th>Regalo</th>
+    <th>Cliente</th>
+    <th>Mensaje</th>
+    <th>Monto</th>
+    <th></th>
+  </tr>
+
+<% @reservas.each do |reserva| %>
+  <tr>
+    <td><%= reserva.revista_novio.nombre_novio %> &amp; <%= reserva.revista_novio.nombre_novia %></td>
+    <td><%= image_tag reserva.producto.imagen.url(:thumb) %> <%= reserva.producto.nombre %></td>
+    <td><%= reserva.user.nombre + ' ' + reserva.user.apellido %></td>
+    <th><%= reserva.mensaje %></th>
+    <th><%= reserva.monto %></th>
+    <th><%= link_to 'Pagar!', 
+          new_compra_regalo_novio_path(
+            :compra_regalo_novio => { 
+              :mensaje => reserva.mensaje,
+              :monto => reserva.monto,
+              :producto_id => reserva.producto.id,
+              :revista_novio_id => reserva.revista_novio.id,
+              :user_id => reserva.user.id },
+            :reserva_regalo_novio_id => reserva.id) %></th>
+  </tr>
+<% end %>
+</table>

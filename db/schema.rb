@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140218131550) do
+ActiveRecord::Schema.define(:version => 20140331015204) do
 
   create_table "categoria", :force => true do |t|
     t.string   "nombre"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20140218131550) do
     t.integer  "user_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.text     "mensaje"
   end
 
   add_index "compra_regalo_novios", ["producto_id"], :name => "index_compra_regalo_novios_on_producto_id"

@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<h3>
+  <b>Boda:</b> <%= @reserva_regalo_novio.revista_novio.nombre_novio %> y 
+  <%= @reserva_regalo_novio.revista_novio.nombre_novia %>
+</h3>
+
+<div style="float: left; margin-right: 30px;">
+  <%= image_tag @reserva_regalo_novio.producto.imagen.url(:medium) %>
+</div>
+
+<div style="float: left;">
+  <div>
+    <b>Nombre:</b>
+    <%= @reserva_regalo_novio.producto.nombre %>
+  </div>
+
+  <div>
+    <b>Precio:</b>
+    <%= @reserva_regalo_novio.producto.precio %>
+  </div>
+
+  <div>
+    <b>Descripcion:</b>
+    <%= @reserva_regalo_novio.producto.descripcion %>
+  </div>
+
+  <div>
+    <b>Codigo:</b>
+    <%= @reserva_regalo_novio.producto.codigo %>
+  </div>
+
+  <%= form_for(@reserva_regalo_novio) do |f| %>
+    <p>
+      <b>Monto a regalar:</b>
+      <%= f.number_field :monto, :value => @max_a_regalar, :min => 1, :max => @max_a_regalar %>
+    </p>
+
+    <p>
+      <b>Mensaje a los novios:</b><br />
+      <%= f.text_area :mensaje, :rows => 5 %>
+    </p>
+
+    <div class="actions">
+      <%= f.hidden_field :producto_id, :value => @reserva_regalo_novio.producto.id %>
+      <%= f.hidden_field :revista_novio_id, :value => @reserva_regalo_novio.revista_novio.id %>
+      <%= f.submit 'Reservar' %>
+    </div>
+  <% end %>
+</div>
+
+<div class="clear"></div>
+
+<%= link_to 'Volver', revista_novio_path(@reserva_regalo_novio.revista_novio.id) %>

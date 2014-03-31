@@ -8,6 +8,9 @@ Tesis::Application.routes.draw do
 
   resources :productos
 
+  resources :reserva_regalo_novios
+
+  resources :compra_regalo_novios
 
   resources :categoria
 
