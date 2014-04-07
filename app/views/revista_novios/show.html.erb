@@ -4,7 +4,8 @@
 
 <% if current_user && current_user.id == @revista_novio.user_id %>
   <%= link_to 'Editar Revista', edit_revista_novio_path(@revista_novio) %> |
-  <span onclick="mostrar_envio_mail()" style="text-decoration: underline; cursor: pointer;">Enviar Invitaciones</span>
+  <span onclick="mostrar_envio_mail()" style="text-decoration: underline; cursor: pointer;">Enviar Invitaciones</span> |
+  <%= link_to 'Ver regalos regalados', ver_regalos_revista_novios_path(:revista_novio_id => @revista_novio.id ) %>
 <% end %>
 
 <div id="<%= @revista_novio.estilo %>">

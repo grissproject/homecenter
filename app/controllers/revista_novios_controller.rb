@@ -2,6 +2,11 @@ class RevistaNoviosController < ApplicationController
 
   before_filter :authenticate_user!, :except => [:show]
 
+  def ver_regalos
+    @revista_novio = RevistaNovio.find(params[:revista_novio_id])
+    @regalos = CompraRegaloNovio.find(:all, :conditions => "revista_novio_id = '#{@revista_novio.id}'")
+  end
+
   # GET /revista_novios
   # GET /revista_novios.json
   def index

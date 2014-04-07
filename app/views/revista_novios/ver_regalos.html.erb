@@ -1,0 +1,26 @@
+<style type="text/css">
+  th, td { border: 1px solid #CCC; }
+</style>
+<h1>Regalos que fueron regalados por los invitados</h1>
+
+<table>
+  <tr>
+    <th>Invitado</th>
+    <th>Regalo</th>
+    <th>Mensaje</th>
+    <th>Monto</th>
+  </tr>
+
+<% @regalos.each do |regalo| %>
+  <tr>
+    <td><%= regalo.user.nombre %> <%= regalo.user.apellido %> <br /> <%= image_tag regalo.user.avatar.url(:thumb) %></td>
+    <td><%= regalo.producto.nombre %><br /><%= image_tag regalo.producto.imagen.url(:thumb) %></td>
+    <th><%= regalo.mensaje %></th>
+    <th><%= regalo.monto %></th>
+  </tr>
+<% end %>
+</table>
+
+<%= params[:id] %>
+
+<%= link_to 'Volver', revista_novio_path(@revista_novio) %>

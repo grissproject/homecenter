@@ -1,6 +1,9 @@
 Tesis::Application.routes.draw do
-  resources :revista_novios
-
+  resources :revista_novios do
+    collection do
+      get :ver_regalos
+    end
+  end
 
   get "home/index"
 
