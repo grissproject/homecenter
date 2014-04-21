@@ -667,6 +667,8 @@ ul.items li a span {
   opacity:0.8;
 }
 
+#admin_login { float: right; color: #555; margin-right: 10px; }
+
 /**
  * Common tags
  */

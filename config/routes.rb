@@ -1,4 +1,6 @@
 Tesis::Application.routes.draw do
+  devise_for :admins
+
   resources :revista_novios do
     collection do
       get :ver_regalos

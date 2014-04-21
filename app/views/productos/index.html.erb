@@ -6,15 +6,22 @@
 
 <div id="stocks">
   <ul>
-    <% @productos.each do |producto| %>
-    <li class="stock-item">
-      <%= link_to "#{image_tag producto.imagen.url(:thumb)}<span class='icon'></span>".html_safe, producto, :class => 'preview' %>
-      <%= producto.nombre %>
-      <span><%= producto.stock %> unidades</span>
-      <em><%= producto.descripcion %></em>
-      <a href="checkout.php" class="btn-cart">+ Premios</a>
-      <a href="checkout.php" class="btn-wish">+ Novios</a>
-    </li>
-    <% end %>
+    <%
+    i = 0
+    @productos.each do |producto|
+      %>
+      <li class="stock-item">
+        <%= link_to "#{image_tag producto.imagen.url(:thumb)}<span class='icon'></span>".html_safe, producto, :class => 'preview' %>
+        <%= producto.nombre %>
+        <span><%= producto.stock %> unidades</span>
+        <em><%= producto.descripcion %></em>
+        <a href="checkout.php" class="btn-cart">+ Premios</a>
+        <a href="checkout.php" class="btn-wish">+ Novios</a>
+      </li>
+      <%
+      i += 1;
+      concat raw '<div class="clear"></div>' if (i == 4)
+    end 
+    %>
   </ul>
 </div>
