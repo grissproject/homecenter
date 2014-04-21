@@ -65,13 +65,20 @@
   <h2>Lista de Regalos</h2>
   <div id="stocks">
     <ul>
-      <% for producto in Producto.find(:all) %>
-      <li class="stock-item">
-        <%= check_box_tag "revista_novio[producto_ids][]", producto.id, @revista_novio.productos.include?(producto) %> <%= producto.nombre %>
-        <%= link_to "#{image_tag producto.imagen.url(:thumb)}<span class='icon'></span>".html_safe, producto, :class => 'preview' %>
-        <em><%= producto.descripcion %></em>
-      </li>
-      <% end %>
+      <%
+      i = 0
+      for producto in Producto.find(:all)
+        %>
+        <li class="stock-item">
+          <%= check_box_tag "revista_novio[producto_ids][]", producto.id, @revista_novio.productos.include?(producto) %> <%= producto.nombre %>
+          <%= link_to "#{image_tag producto.imagen.url(:thumb)}<span class='icon'></span>".html_safe, producto, :class => 'preview' %>
+          <em><%= producto.descripcion %></em>
+        </li>
+        <%
+        i += 1;
+        concat raw '<div class="clear"></div>' if (i == 4)
+      end 
+      %>
     </ul>
   </div>
 
