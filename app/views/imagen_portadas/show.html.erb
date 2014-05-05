@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Titulo:</b>
+  <%= @imagen_portada.titulo %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @imagen_portada.descripcion %>
+</p>
+
+
+<%= link_to 'Edit', edit_imagen_portada_path(@imagen_portada) %> |
+<%= link_to 'Back', imagen_portadas_path %>

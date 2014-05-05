@@ -1,4 +1,9 @@
 Tesis::Application.routes.draw do
+  get "config/index"
+
+  resources :imagen_portadas
+
+
   devise_for :admins
 
   resources :revista_novios do

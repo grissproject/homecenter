@@ -1,0 +1,34 @@
+<div style="font-weight: bold">
+  <span style="color: red;">Importante: </span>
+  Para evitar romper el dise&ntilde;o de la p&aacute;gina, las imagenes deben ser todas del mismo
+  tama&ntilde;o. Idealmente de 876x326 px.
+</div>
+<%= form_for(@imagen_portada) do |f| %>
+  <% if @imagen_portada.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@imagen_portada.errors.count, "error") %> prohibited this imagen_portada from being saved:</h2>
+
+      <ul>
+      <% @imagen_portada.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :titulo %><br />
+    <%= f.text_field :titulo %>
+  </div>
+  <div class="field">
+    <%= f.label :imagen %>:
+    <%= f.file_field :imagen %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br />
+    <%= f.text_area :descripcion %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

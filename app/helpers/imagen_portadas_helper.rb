@@ -1,0 +1,2 @@
+module ImagenPortadasHelper
+end

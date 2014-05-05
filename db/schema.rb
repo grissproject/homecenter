@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140418140816) do
+ActiveRecord::Schema.define(:version => 20140505153546) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -54,6 +54,17 @@ ActiveRecord::Schema.define(:version => 20140418140816) do
   add_index "compra_regalo_novios", ["producto_id"], :name => "index_compra_regalo_novios_on_producto_id"
   add_index "compra_regalo_novios", ["revista_novio_id"], :name => "index_compra_regalo_novios_on_revista_novio_id"
   add_index "compra_regalo_novios", ["user_id"], :name => "index_compra_regalo_novios_on_user_id"
+
+  create_table "imagen_portadas", :force => true do |t|
+    t.string   "titulo"
+    t.text     "descripcion"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "imagen_file_name"
+    t.string   "imagen_content_type"
+    t.integer  "imagen_file_size"
+    t.datetime "imagen_updated_at"
+  end
 
   create_table "productos", :force => true do |t|
     t.string   "nombre"

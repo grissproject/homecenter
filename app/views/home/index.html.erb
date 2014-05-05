@@ -1,36 +1,7 @@
-<div id="adbox">
-  <div id="search">
-    <h3>Busqueda rapida</h3>
-    <p>
-      Ahora puedes buscar entre nuestros mas destacados productos!
-    </p>
-    <form action="index.html" method="post">
-      <ul>
-        <li>
-          <select id="size">
-            <option>Buscar por Categoria</option>
-          </select>
-        </li>
-        <li>
-          <select id="color">
-            <option>Buscar por Color</option>
-          </select>
-        </li>
-        <li>
-          <select id="brand">
-            <option>Buscar por Marca</option>
-          </select>
-        </li>
-        <li>
-          <select id="style">
-            <option>Buscar por Estilo</option>
-          </select>
-        </li>
-      </ul>
-      <input type="submit" value="Buscar!" class="button">
-    </form>
-  </div>
-  <%= image_tag 'home-banner.jpg'%>
+<div id="slider">
+  <% @imagen_portadas.each do |imagen_portada| %>
+      <%= image_tag imagen_portada.imagen.url %>
+  <% end %>
 </div>
 <div id="main">
   <div id="featured">

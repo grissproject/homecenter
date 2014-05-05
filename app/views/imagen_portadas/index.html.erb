@@ -1,0 +1,17 @@
+<h1>Imagenes de Portada</h1>
+
+<% @imagen_portadas.each do |imagen_portada| %>
+  <div style="float: left; width: 50%;">
+    <%= image_tag imagen_portada.imagen.url(:thumb) %>
+  </div>
+  <div style="float: left; width: 50%">
+    <strong><big><%= imagen_portada.titulo %></big></strong>
+    (<%= link_to 'Editar', edit_imagen_portada_path(imagen_portada) %> | 
+    <%= link_to 'Eliminar', imagen_portada, method: :delete, data: { confirm: 'Estas Seguro?' } %>)
+    <br />
+    <p><%= imagen_portada.descripcion %></p>
+  </div>
+  <div class="clear" style="margin-top: 20px;">&nbsp;</div>
+<% end %>
+
+<%= link_to 'Agregar Imagen de Portada', new_imagen_portada_path %>
