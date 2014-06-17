@@ -1,4 +1,10 @@
 Tesis::Application.routes.draw do
+  get "admin/index"
+
+  get "admin/edit"
+
+  get "admin/new"
+
   resources :panfletos
 
 
