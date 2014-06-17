@@ -1,0 +1,76 @@
+<%= form_for(@revista_mensual) do |f| %>
+  <% if @revista_mensual.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@revista_mensual.errors.count, "error") %> al crear la revista:</h2>
+
+      <ul>
+      <% @revista_mensual.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :titulo %><br />
+    <%= f.text_field :titulo %>
+  </div>
+  <div class="field">
+    <%= f.label :temporada %><br />
+    <%= f.text_field :temporada %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br />
+    <%= f.text_area :descripcion %>
+  </div>
+  
+  <div class="form_row">
+    <label for="estilo">Estilo:</label>
+    <br>
+    <div class="estilo_item">
+      <%= f.radio_button :estilo, 'fresh' %> Fresh
+      <%= image_tag 'bgs/fresh.jpg'%>
+    </div>
+    <div class="estilo_item">
+      <%= f.radio_button :estilo, 'peligro' %> Peligro
+      <%= image_tag 'bgs/peligro.jpg'%>
+    </div>
+    <div class="estilo_item">
+      <%= f.radio_button :estilo, 'explosion' %> Explosion
+      <%= image_tag 'bgs/explosion.jpg'%>
+    </div>
+    <div class="estilo_item">
+      <%= f.radio_button :estilo, 'lemon' %> Lemon
+      <%= image_tag 'bgs/lemon.jpg'%>
+    </div>
+  </div>
+
+  <div class="clear"></div>
+  <div class="field">
+    <%= f.check_box :home %> Mostrar en Inicio?
+  </div>
+
+  <h2>Lista de Productos</h2>
+  <div id="stocks">
+    <ul>
+      <%
+      i = 0
+      for producto in Producto.find(:all)
+        %>
+        <li class="stock-item">
+          <%= check_box_tag "revista_mensual[producto_ids][]", producto.id, @revista_mensual.productos.include?(producto) %> <%= producto.nombre %>
+          <%= link_to "#{image_tag producto.imagen.url(:thumb)}<span class='icon'></span>".html_safe, producto, :class => 'preview' %>
+          <em><%= producto.descripcion %></em>
+        </li>
+        <%
+        i += 1;
+        concat raw '<div class="clear"></div>' if (i == 4)
+      end 
+      %>
+    </ul>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

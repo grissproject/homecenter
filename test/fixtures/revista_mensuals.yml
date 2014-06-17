@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  titulo: MyString
+  temporada: MyString
+  descripcion: MyText
+  estilo: MyString
+  home: false
+
+two:
+  titulo: MyString
+  temporada: MyString
+  descripcion: MyText
+  estilo: MyString
+  home: false

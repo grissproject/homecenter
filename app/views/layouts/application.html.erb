@@ -32,20 +32,13 @@
             <li>
               <%= link_to "Novios", revista_novios_path %>
             </li>
-            <li>
-              <%= link_to "Club Center", home_index_path %>
-            </li>
+            <li><%= link_to "Revistas", revista_mensuals_path %></li>
+            <li><%= link_to "Panfletos", panfletos_path %></li>
             <%
             if admin_signed_in?
             %>
               <li>
-                <%= link_to "Productos", productos_path %>
-              </li>
-              <li>
-                <%= link_to "Reservas", reserva_regalo_novios_path %>
-              </li>
-              <li>
-                <%= link_to "Config", config_index_path %>
+                <%= link_to "Administracion", config_index_path %>
               </li>
             <% end %>
           </ul>

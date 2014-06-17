@@ -31,6 +31,7 @@
 </div>
 
 <div id="main">
+  <!--
   <div id="featured">
     <h4><span>Destacados</span></h4>
     <ul class="items">
@@ -48,22 +49,73 @@
       </li>
     </ul>
   </div>
+  -->
   <div id="sale">
-    <h4><span>En Descuento</span></h4>
-    <ul class="items">
-      <li>
-        <a href="product.html"> <%= image_tag 'boots-brown.jpg'%> <span>$8.50</span> Hukbalahap Boots </a>
-      </li>
-      <li>
-        <a href="product.html"> <%= image_tag 'boots-brown.jpg'%> <span>$8.50</span> Hukbalahap Boots </a>
-      </li>
-      <li>
-        <a href="product.html"> <%= image_tag 'boots-brown.jpg'%> <span>$8.50</span> Hukbalahap Boots </a>
-      </li>
-      <li>
-        <a href="product.html"> <%= image_tag 'boots-brown.jpg'%> <span>$8.50</span> Hukbalahap Boots </a>
-      </li>
-    </ul>
+    <h4><span>Revistas</span></h4>
+    <% @revista_mensuals.each do |revista_mensual| %>
+      <% next if !revista_mensual.home %>
+
+
+      <div id="<%= revista_mensual.estilo %>">
+        <div id="titulo">    
+          <%= revista_mensual.titulo %>
+        </div>
+
+        <div id="temporada">
+          <span>Temporada:</span> <%= revista_mensual.temporada %>
+        </div>
+
+        <div id="desc">
+          <%= revista_mensual.descripcion %>
+        </div>
+
+        <div id="main-slider" class="liquid-slider">
+          
+            <%
+            @cc = 0;
+            @scc = 1;
+            revista_mensual.productos.each do |producto|
+              %>
+              <%
+                if @cc % 3 == 0
+                  if @cc != 0
+                  %>
+                    </ul>
+                  </div>
+                  <% end %>
+                <div class="revista_prods">
+                  <h2 class="title">Pagina <%= @scc %></h2>
+                  <ul>
+              <% @scc += 1;
+              end %>
+                    <li class="stock-item">
+                      <%= link_to "#{image_tag producto.imagen.url(:thumb)}<span class='icon'></span>".html_safe, producto, :class => 'preview' %>
+                      <%= producto.nombre %>
+                      <em><%= producto.descripcion %></em>
+                      <div class="total">Precio: <%= producto.precio %> Bs.</div>
+                    </li>
+            <% 
+              @cc += 1
+            end %>
+          
+        </div>
+        <div class="clear"></div>
+      </div>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js"></script>
+      <SCRIPT TYPE="text/javascript" src='/assets/jquery.liquid-slider.min'></SCRIPT>
+      <link rel="stylesheet" type="text/css" href="/assets/liquid-slider.css">
+      <script>
+        $('#main-slider').liquidSlider();
+      </script>
+
+
+
+
+
+      <hr />
+    <% end %>
   </div>
 </div>
 

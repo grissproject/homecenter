@@ -1,0 +1,17 @@
+<% if admin_signed_in? %>
+  <div style="float:right;"><%= link_to 'Nuevo Panfleto', new_panfleto_path %></div>
+<% end %>
+
+<h1>Lista de Panfletos</h1>
+
+<% @panfletos.each do |panfleto| %>
+  <div style="font-size: 19px; font-weight: bold"><%= panfleto.titulo %></div>
+  <p><%= panfleto.descripcion %></p>
+  <%= link_to 'Ver', panfleto %>
+  <% if admin_signed_in? %>
+     | 
+    <%= link_to 'Editar', edit_panfleto_path(panfleto) %> | 
+    <%= link_to 'Eliminar', panfleto, method: :delete, data: { confirm: 'Estas seguro?' } %>
+  <% end %>
+  <hr />
+<% end %>

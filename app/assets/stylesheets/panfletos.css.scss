@@ -1,0 +1,61 @@
+// Place all the styles related to the Panfletos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.estilo_item { width: 150px; float: left; margin-left: 15px; }
+.estilo_item img { width: 100%; }
+
+
+.revista_prods ul {
+  display: inline-block;
+  list-style: none;
+  width: 940px;
+  margin: 0 24px;
+  padding: 0;
+}
+.revista_prods ul li {
+  float: left;
+  color: #646b85;
+  font-family: 'HammersmithOneRegular';
+  font-size: 14px;
+  line-height: 24px;
+  width: 169px;
+  margin: 0 66px 60px 0;
+  position: relative;
+}
+.revista_prods ul li img {
+  border: 1px solid #d2cecf;
+}
+
+.revista_prods ul li span {
+  /* float: right; */
+  display: block;
+  color: #e3b612;
+}
+
+.revista_prods ul li a.preview {
+  background-color: transparent;
+  display: block;
+  /* height: 171px; */
+  width: 171px;
+  padding: 0;
+}
+.revista_prods ul li a.preview span.icon {
+  background-position: -63px 0;
+  display: block;
+  height: 12px;
+  width: 15px;
+  padding: 0;
+  position: absolute;
+  top: 5px;
+  right: 0;
+}
+
+/**
+ * Revista Templates
+ */
+#panfleto { background: url(bgs/explosion.jpg); color: #333; font-size: 19px; background-size:100% }
+#panfleto #titulo { font-family: 'Engagement', cursive; font-size: 68px; text-align: center; padding-top: 60px; }
+#panfleto #temporada { color: #777; font-size: 0.8em; text-align: center; margin: 15px;  }
+#panfleto #desc { clear: both; padding: 50px; margin-top: 20px; }
+#panfleto .stock-item { background-color: #FFF; padding: 3px; margin: 0 45px 60px 0; }

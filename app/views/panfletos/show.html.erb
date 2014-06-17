@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<div id="panfleto">
+  <div id="titulo">    
+    <%= @panfleto.titulo %>
+  </div>
+
+  <div id="desc">
+    <%= @panfleto.descripcion %>
+  </div>
+    
+  <div id="stocks">
+    <ul>
+      <% @panfleto.productos.each do |producto| %>
+      <li class="stock-item">
+        <%= link_to "#{image_tag producto.imagen.url(:thumb)}<span class='icon'></span>".html_safe, producto, :class => 'preview' %>
+        <%= producto.nombre %>
+        <em><%= producto.descripcion %></em>
+        <div class="total">Precio: <%= producto.precio %> Bs.</div>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+
+
+  <div class="clear"></div>
+</div>

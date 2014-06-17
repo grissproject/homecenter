@@ -1,4 +1,10 @@
 Tesis::Application.routes.draw do
+  resources :panfletos
+
+
+  resources :revista_mensuals
+
+
   get "user/index"
 
   get "user/create"

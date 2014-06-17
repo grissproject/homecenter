@@ -1,0 +1,47 @@
+<%= form_for(@panfleto) do |f| %>
+  <% if @panfleto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@panfleto.errors.count, "error") %> prohibited this panfleto from being saved:</h2>
+
+      <ul>
+      <% @panfleto.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :titulo %><br />
+    <%= f.text_field :titulo %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br />
+    <%= f.text_area :descripcion %>
+  </div>
+
+  <h2>Lista de Productos</h2>
+  <div id="stocks">
+    <ul>
+      <%
+      i = 0
+      for producto in Producto.find(:all)
+        %>
+        <li class="stock-item">
+          <%= check_box_tag "panfleto[producto_ids][]", producto.id, @panfleto.productos.include?(producto) %> <%= producto.nombre %>
+          <%= link_to "#{image_tag producto.imagen.url(:thumb)}<span class='icon'></span>".html_safe, producto, :class => 'preview' %>
+          <em><%= producto.descripcion %></em>
+        </li>
+        <%
+        i += 1;
+        concat raw '<div class="clear"></div>' if (i == 4)
+      end 
+      %>
+    </ul>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
