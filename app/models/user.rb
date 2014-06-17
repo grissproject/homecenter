@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "168x168>", :mini => "18x18>" }, :default_url => "no-user-photo.png"
+
+  validates_uniqueness_of :username
 end

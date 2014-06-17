@@ -67,7 +67,9 @@
             <div class="barra_regalado_text"><%= percentage.ceil %>%</div>
           </div>
           <div>
-            <%= link_to 'Regalar!', new_reserva_regalo_novio_path(:reserva_regalo_novio => { :producto_id => producto.id, :revista_novio_id => @revista_novio.id }) %>
+            <% if @revista_novio.user_id != current_user.id %>
+              <%= link_to 'Regalar!', new_reserva_regalo_novio_path(:reserva_regalo_novio => { :producto_id => producto.id, :revista_novio_id => @revista_novio.id }) %>
+            <% end %>
           </div>
       </li>
       <% end %>

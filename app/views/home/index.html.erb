@@ -1,8 +1,35 @@
-<div id="slider">
-  <% @imagen_portadas.each do |imagen_portada| %>
-      <%= image_tag imagen_portada.imagen.url %>
+<%= javascript_include_tag 'jquery.rambling.slider' %>
+<%= stylesheet_link_tag 'jquery.rambling.slider' %>
+
+<div style="width: 100%">
+ <div class="slider-wrapper theme-default" style="width: 100%; height: 400px;">
+  <div id="slider" class="ramblingSlider" style="width: 100%; height: 326px;">
+    <%
+    @cont = 0;
+    @imagen_portadas.each do |imagen_portada|
+      @cont += 1;
+      @str = "slide-txt-#{@cont}";
+      %>
+      <%= image_tag imagen_portada.imagen.url, :title => "##{@str}" %>
+    <% end %>
+  </div>
+ </div>
+</div>
+
+<div class="hidden" id="slider-texts">
+  <%
+  @cont = 0;
+  @imagen_portadas.each do |imagen_portada|
+    @cont += 1;
+    @str = "slide-txt-#{@cont}";
+    %>
+    <%= content_tag :div, :id => "#{@str}" do %>
+      <%= content_tag(:strong, "#{imagen_portada.titulo}") %>
+      <%= content_tag(:p, "#{imagen_portada.descripcion}") %>
+    <% end %>
   <% end %>
 </div>
+
 <div id="main">
   <div id="featured">
     <h4><span>Destacados</span></h4>
@@ -39,3 +66,9 @@
     </ul>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(function() {
+    $('#slider').ramblingSlider();
+  });
+</script>
