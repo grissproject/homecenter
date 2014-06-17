@@ -1,4 +1,14 @@
 Tesis::Application.routes.draw do
+  get "user/index"
+
+  get "user/create"
+
+  get "user/activate"
+
+  get "user/deactivate"
+
+  get "user/edit"
+
   get "config/index"
 
   resources :imagen_portadas
