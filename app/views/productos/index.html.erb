@@ -4,24 +4,50 @@
 </div>
 <h1>Productos</h1>
 
-<div id="stocks">
+Filtrar por categor&iacute;a: 
+<select id="category_filter" onchange="filter_category()">
+  <option value='item'>Todas</option>
+  <%
+  for c in Categorium.find(:all)
+    %>
+    <option value="<%= c.id %>"><%= c.nombre %></option>
+    <%
+  end
+  %>
+</select>
+
+<div id="stocks" style="margin-top: 20px;">
   <ul>
     <%
     i = 0
     @productos.each do |producto|
       %>
-      <li class="stock-item">
+      <li class="stock-item category_<%= producto.categorium.id %> category_item">
         <%= link_to "#{image_tag producto.imagen.url(:thumb)}<span class='icon'></span>".html_safe, producto, :class => 'preview' %>
         <%= producto.nombre %>
         <span><%= producto.stock %> unidades</span>
         <em><%= producto.descripcion %></em>
-        <a href="checkout.php" class="btn-cart">+ Premios</a>
-        <a href="checkout.php" class="btn-wish">+ Novios</a>
+        <% if producto.novios? %>
+          <a class="btn-wish">Novios</a>
+        <% end %>
       </li>
       <%
-      i += 1;
-      concat raw '<div class="clear"></div>' if (i == 4)
     end 
     %>
   </ul>
 </div>
+
+<script type="text/javascript">
+  function filter_category() {
+    $('.category_item').hide();
+    filter = $('#category_filter').val();
+    $('.category_' + filter).show();
+  }
+  $(window).load(function() {
+    <% if request.GET.include? "cat" %>
+      $('.category_item').hide();
+      $('#category_filter').val(<%= params[:cat] %>);
+      $('.category_' + <%= params[:cat] %>).show();
+    <% end %>
+  });
+</script>

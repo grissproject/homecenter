@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140617174522) do
+ActiveRecord::Schema.define(:version => 20140831104724) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -106,6 +106,30 @@ ActiveRecord::Schema.define(:version => 20140617174522) do
     t.integer "producto_id"
     t.integer "revista_novio_id"
   end
+
+  create_table "regalo_productos", :force => true do |t|
+    t.boolean  "activo"
+    t.integer  "producto_id"
+    t.text     "mensaje"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "regalo_productos", ["producto_id"], :name => "index_regalo_productos_on_producto_id"
+  add_index "regalo_productos", ["user_id"], :name => "index_regalo_productos_on_user_id"
+
+  create_table "reserva_productos", :force => true do |t|
+    t.boolean  "activo"
+    t.integer  "producto_id"
+    t.text     "mensaje"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "reserva_productos", ["producto_id"], :name => "index_reserva_productos_on_producto_id"
+  add_index "reserva_productos", ["user_id"], :name => "index_reserva_productos_on_user_id"
 
   create_table "reserva_regalo_novios", :force => true do |t|
     t.float    "monto"

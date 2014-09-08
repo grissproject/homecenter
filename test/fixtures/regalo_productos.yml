@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  activo: false
+  producto: 
+  mensaje: MyText
+  user: 
+
+two:
+  activo: false
+  producto: 
+  mensaje: MyText
+  user: 

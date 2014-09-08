@@ -39,6 +39,12 @@
     <%= f.label :categoria_id %>: 
     <%= f.select(:categoria_id, Categorium.all.collect {|p| [ p.nombre, p.id ] }, :prompt => 'Seleccione') %>
   </div>
+
+  <div class="field">
+    <%= f.check_box :novios %> 
+    Disponible para novios
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -63,20 +63,30 @@
   <hr />
 
   <h2>Lista de Regalos</h2>
+  Filtrar por categor&iacute;a: 
+  <select id="category_filter" onchange="filter_category()">
+    <option value='item'>Todas</option>
+    <%
+    for c in Categorium.find(:all)
+      %>
+      <option value="<%= c.id %>"><%= c.nombre %></option>
+      <%
+    end
+    %>
+  </select>
+
   <div id="stocks">
     <ul>
       <%
       i = 0
-      for producto in Producto.find(:all)
+      for producto in Producto.where(novios: true)
         %>
-        <li class="stock-item">
+        <li class="stock-item category_<%= producto.categorium.id %> category_item">
           <%= check_box_tag "revista_novio[producto_ids][]", producto.id, @revista_novio.productos.include?(producto) %> <%= producto.nombre %>
           <%= link_to "#{image_tag producto.imagen.url(:thumb)}<span class='icon'></span>".html_safe, producto, :class => 'preview' %>
           <em><%= producto.descripcion %></em>
         </li>
         <%
-        i += 1;
-        concat raw '<div class="clear"></div>' if (i == 4)
       end 
       %>
     </ul>
@@ -86,3 +96,11 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  function filter_category() {
+    $('.category_item').hide();
+    filter = $('#category_filter').val();
+    $('.category_' + filter).show();
+  }
+</script>

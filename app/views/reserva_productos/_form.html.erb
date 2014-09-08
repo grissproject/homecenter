@@ -1,0 +1,27 @@
+<%= form_for(@reserva_producto) do |f| %>
+  <% if @reserva_producto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reserva_producto.errors.count, "error") %> prohibited this reserva_producto from being saved:</h2>
+
+      <ul>
+      <% @reserva_producto.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    Producto: <%= @reserva_producto.producto.nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :mensaje %><br />
+    <%= f.text_area :mensaje %>
+  </div>
+
+  <div class="actions">
+    <%= f.hidden_field :producto_id, :value => @reserva_producto.producto.id %>
+
+    <%= f.submit %>
+  </div>
+<% end %>

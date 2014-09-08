@@ -88,6 +88,7 @@ img {
   margin: 0 18px;
   padding-top: 5px;
   text-align: center;
+  position: relative;
 }
 #navigation a {
   font-family: 'HammersmithOneRegular';
@@ -128,6 +129,13 @@ img {
 #navigation ul#secondary li:first-child a:hover {
   /* padding-top: 0; */
 }
+
+#navigation .submenu { display: none; position: absolute; top: 25px; left: -23px; z-index: 15; padding: 0; width: 150px; }
+#navigation .submenu li { margin-right: 0; background-color: #b8dcdd; padding: 0; border: none; display: list-item; width: 150px; }
+#navigation .submenu a { display: list-item; padding: 10px 20px; text-align: left; color: #777; font-size: 16px; }
+#navigation .submenu a:hover { color: #FFF; }
+#navigation ul li:hover > .submenu { display: list-item; }
+
 /*------------------------------ CONTENTS ------------------------------*/
 #contents {
   margin: 0 0 60px;
@@ -325,6 +333,7 @@ ul.items li a span {
   font-size: 14px;
   line-height: 24px;
   width: 169px;
+  height: 230px;
   margin: 0 66px 60px 0;
   position: relative;
 }

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Activo:</b>
+  <%= @regalo_producto.activo %>
+</p>
+
+<p>
+  <b>Producto:</b>
+  <%= @regalo_producto.producto %>
+</p>
+
+<p>
+  <b>Mensaje:</b>
+  <%= @regalo_producto.mensaje %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @regalo_producto.user %>
+</p>
+
+
+<%= link_to 'Edit', edit_regalo_producto_path(@regalo_producto) %> |
+<%= link_to 'Back', regalo_productos_path %>

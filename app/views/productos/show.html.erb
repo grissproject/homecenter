@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<div style="float: right;">
+    <%= link_to 'Regalar!', new_reserva_producto_path(:reserva_producto => { :producto_id => @producto.id}) %> | <span onclick="mostrar_envio_mail()" style="text-decoration: underline; cursor: pointer;">Sugerir por mail</span>
+    
+</div>
+
 <div style="float: left; margin-right: 30px;">
   <%= image_tag @producto.imagen.url(:medium) %>
 </div>
@@ -42,3 +47,64 @@
   <%= link_to 'Editar', edit_producto_path(@producto) %> |
   <%= link_to 'Eliminar', @producto, method: :delete, data: { confirm: 'Estas seguro?' } %>
 <% end %>
+
+<div id="mail_invitation">
+  <div id="close_btn" onclick="$('#mail_invitation').hide();"></div>
+  Mails: &nbsp; <input id="para" type="text" value="" size="30"/><br />
+  Asunto: <input id="asunto" type="text" value="<%= @producto.nombre %>" /><br />
+  Mensaje: <br /><textarea id="msg" rows=6 cols=50></textarea><br />
+  <input type="button" value="Enviar" onclick="enviar_mail();" />
+</div>
+
+<script type="text/javascript">
+function mostrar_envio_mail() {
+    $('#mail_invitation').center();
+    $("#mail_invitation").show();
+}
+/**
+ * Oscurece la pagina entera
+ */
+function oscurecer_pagina() {
+    $('body').append('<div id="screen_black" style="position: absolute; left: 0; top: 0; background: #000;"></div>');
+    $('#screen_black').css({ opacity: 0.7, 'width':$(document).width(),'height':$(document).height()});
+    $('body').css({'overflow':'hidden'});
+}
+/**
+ * NO Oscurece la pagina entera
+ */
+function no_oscurecer_pagina() {
+    $('#screen_black').remove();
+    $('body').css({'overflow':'visible'});
+}
+
+function enviar_mail() {
+  para = $('#para').val();
+  titulo = $('#asunto').val();
+  msg = $('#msg').val();
+  url = '<%= request.url %>';
+  <% if current_user %>
+    de = '<%= current_user.email; %>';
+  <% end %>
+  $.ajax({
+    url: 'http://ariellm.com/mail.php',
+    crossDomain: true,
+    data: {
+      para: para,
+      titulo: titulo,
+      msg: msg,
+      url: url,
+      de: de
+    }
+  })
+  $('#mail_invitation').hide();
+}
+
+jQuery.fn.center = function () {
+    this.css("position","absolute");
+    this.css("top", Math.max(0, (($(window).height() - this.outerHeight()) / 2) + 
+                                                $(window).scrollTop()) + "px");
+    this.css("left", Math.max(0, (($(window).width() - this.outerWidth()) / 2) + 
+                                                $(window).scrollLeft()) + "px");
+    return this;
+}
+</script>

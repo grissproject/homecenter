@@ -32,13 +32,26 @@
             <li>
               <%= link_to "Novios", revista_novios_path %>
             </li>
+            <li>
+              <%= link_to "Productos", productos_path %>
+              <ul class="submenu">
+                <%
+                categoria = Categorium.all
+                categoria.each do |categorium|
+                  %>
+                  <li><%= link_to categorium.nombre, productos_path(:cat => categorium.id) %></li>
+                  <%
+                end
+                %>
+              </ul>
+            </li>
             <li><%= link_to "Revistas", revista_mensuals_path %></li>
             <li><%= link_to "Panfletos", panfletos_path %></li>
             <%
             if admin_signed_in?
             %>
               <li>
-                <%= link_to "Administracion", config_index_path %>
+                <%= link_to "Admin", config_index_path %>
               </li>
             <% end %>
           </ul>

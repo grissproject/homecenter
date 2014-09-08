@@ -1,0 +1,29 @@
+<h1>Listing regalo_productos</h1>
+
+<table>
+  <tr>
+    <th>Activo</th>
+    <th>Producto</th>
+    <th>Mensaje</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @regalo_productos.each do |regalo_producto| %>
+  <tr>
+    <td><%= regalo_producto.activo %></td>
+    <td><%= regalo_producto.producto %></td>
+    <td><%= regalo_producto.mensaje %></td>
+    <td><%= regalo_producto.user %></td>
+    <td><%= link_to 'Show', regalo_producto %></td>
+    <td><%= link_to 'Edit', edit_regalo_producto_path(regalo_producto) %></td>
+    <td><%= link_to 'Destroy', regalo_producto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Regalo producto', new_regalo_producto_path %>

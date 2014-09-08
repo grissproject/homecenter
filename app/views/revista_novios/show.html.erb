@@ -66,7 +66,7 @@
             <div class="barra_regalado_text"><%= percentage.ceil %>%</div>
           </div>
           <div>
-            <% if @revista_novio.user_id != current_user.id %>
+            <% if !current_user || (current_user && @revista_novio.user_id != current_user.id) %>
               <%= link_to 'Regalar!', new_reserva_regalo_novio_path(:reserva_regalo_novio => { :producto_id => producto.id, :revista_novio_id => @revista_novio.id }) %>
             <% end %>
           </div>
@@ -78,10 +78,10 @@
 
 <div id="mail_invitation">
   <div id="close_btn" onclick="$('#mail_invitation').hide();"></div>
-  Mails: &nbsp; <input type="text" value="" size="30"/><br />
-  Asunto: <input type="text" value="<%= @revista_novio.titulo %>" /><br />
-  Mensaje: <br /><textarea rows=6 cols=50><%= @revista_novio.texto_invitacion %></textarea><br />
-  <input type="button" value="Enviar" />
+  Mails: &nbsp; <input id="para" type="text" value="" size="30"/><br />
+  Asunto: <input id="asunto" type="text" value="<%= @revista_novio.titulo %>" /><br />
+  Mensaje: <br /><textarea id="msg" rows=6 cols=50><%= @revista_novio.texto_invitacion %></textarea><br />
+  <input type="button" value="Enviar" onclick="enviar_mail();" />
 </div>
 
 <script type="text/javascript">
@@ -103,6 +103,28 @@ function oscurecer_pagina() {
 function no_oscurecer_pagina() {
     $('#screen_black').remove();
     $('body').css({'overflow':'visible'});
+}
+
+function enviar_mail() {
+  para = $('#para').val();
+  titulo = $('#asunto').val();
+  msg = $('#msg').val();
+  url = '<%= request.url %>';
+  <% if current_user %>
+    de = '<%= current_user.email; %>';
+  <% end %>
+  $.ajax({
+    url: 'http://ariellm.com/mail.php',
+    crossDomain: true,
+    data: {
+      para: para,
+      titulo: titulo,
+      msg: msg,
+      url: url,
+      de: de
+    }
+  })
+  $('#mail_invitation').hide();
 }
 
 jQuery.fn.center = function () {

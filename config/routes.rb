@@ -1,4 +1,10 @@
 Tesis::Application.routes.draw do
+  resources :reserva_productos
+
+
+  resources :regalo_productos
+
+
   get "admin/index"
 
   get "admin/edit"

@@ -1,0 +1,26 @@
+<style type="text/css">
+  th, td { border: 1px solid #CCC; }
+</style>
+
+<h1>Lista de Reservas</h1>
+
+<table>
+  <tr>
+    <th>Producto</th>
+    <th>Mensaje</th>
+    <th>Usuario</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @reserva_productos.each do |reserva_producto| %>
+  <tr>
+    <td><%= image_tag reserva_producto.producto.imagen.url(:thumb) %> <%= reserva_producto.producto.nombre %></td>
+    <td><%= reserva_producto.mensaje %></td>
+    <td><%= reserva_producto.user.nombre %> <%= reserva_producto.user.apellido %></td>
+    <td><%= link_to 'Pagar', reserva_producto, method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
