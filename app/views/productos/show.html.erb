@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div style="float: right;">
-    <%= link_to 'Regalar!', new_reserva_producto_path(:reserva_producto => { :producto_id => @producto.id}) %> | <span onclick="mostrar_envio_mail()" style="text-decoration: underline; cursor: pointer;">Sugerir por mail</span>
+    <%= link_to 'Reservar', new_reserva_producto_path(:reserva_producto => { :producto_id => @producto.id}) %> | <span onclick="mostrar_envio_mail()" style="text-decoration: underline; cursor: pointer;">Sugerir por mail</span>
     
 </div>
 

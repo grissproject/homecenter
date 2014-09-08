@@ -1,11 +1,12 @@
-<div class="alignright">
-  <%= link_to 'Nuevo Producto', new_producto_path %> |
-  <%= link_to 'Nueva Categoria', new_categorium_path %>
-</div>
+<% if admin_signed_in? %>
+  <div class="alignright">
+    <%= link_to 'Nuevo Producto', new_producto_path %> |
+    <%= link_to 'Nueva Categoria', new_categorium_path %>
+  </div>
+<% end %>
 <h1>Productos</h1>
 
-Filtrar por categor&iacute;a: 
-<select id="category_filter" onchange="filter_category()">
+<select id="category_filter" onchange="filter_category()" style="display:none;">
   <option value='item'>Todas</option>
   <%
   for c in Categorium.find(:all)
