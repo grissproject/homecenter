@@ -1,4 +1,7 @@
 Tesis::Application.routes.draw do
+  resources :portada_revista
+
+
   resources :reserva_productos
 
 

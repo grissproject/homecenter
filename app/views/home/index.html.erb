@@ -51,73 +51,54 @@
   </div>
   -->
   <div id="sale">
-    <h4><span>Revistas</span></h4>
-    <% @revista_mensuals.each do |revista_mensual| %>
-      <% next if !revista_mensual.home %>
+    <h4><span>Revista</span></h4>
+    <% @portada_revistums.each do |portada_revistum| %>
+      <% next if !portada_revistum.activo %>
+      
+      <h1><%= portada_revistum.titulo %></h1>
+      <p><%= portada_revistum.descripcion %></p>
 
+      <div id="main-slider" class="liquid-slider" style="margin: 0">
+        <% i = 0; %>
+        <% portada_revistum.revista_mensual.each do |revista_mensual| %>
+          <% i += 1; %>
+          <div id="<%= revista_mensual.estilo %>">
+            <div class="revista_prods">
+              <h2 class="title">Pagina <%= i; %></h2>
+              <div id="titulo">
+                <%= revista_mensual.titulo %>
+              </div>
 
-      <div id="<%= revista_mensual.estilo %>">
-        <div id="titulo">    
-          <%= revista_mensual.titulo %>
-        </div>
+              <div id="desc">
+                <%= revista_mensual.descripcion %>
+              </div>
 
-        <div id="temporada">
-          <span>Temporada:</span> <%= revista_mensual.temporada %>
-        </div>
-
-        <div id="desc">
-          <%= revista_mensual.descripcion %>
-        </div>
-
-        <div id="main-slider" class="liquid-slider">
-          
-            <%
-            @cc = 0;
-            @scc = 1;
-            revista_mensual.productos.each do |producto|
-              %>
-              <%
-                if @cc % 3 == 0
-                  if @cc != 0
-                  %>
-                    </ul>
-                  </div>
-                  <% end %>
-                <div class="revista_prods">
-                  <h2 class="title">Pagina <%= @scc %></h2>
-                  <ul>
-              <% @scc += 1;
-              end %>
-                    <li class="stock-item">
-                      <%= link_to "#{image_tag producto.imagen.url(:thumb)}<span class='icon'></span>".html_safe, producto, :class => 'preview' %>
-                      <%= producto.nombre %>
-                      <em><%= producto.descripcion %></em>
-                      <div class="total">Precio: <%= producto.precio %> Bs.</div>
-                    </li>
-            <% 
-              @cc += 1
-            end %>
-          
-        </div>
-        <div class="clear"></div>
+              <ul>
+                <% revista_mensual.productos.each do |producto| %>
+                  <li class="stock-item">
+                    <%= link_to "#{image_tag producto.imagen.url(:thumb)}<span class='icon'></span>".html_safe, producto, :class => 'preview' %>
+                    <%= producto.nombre %>
+                    <em><%= producto.descripcion %></em>
+                    <div class="total">Precio: <%= producto.precio %> Bs.</div>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        <% end %>
       </div>
-
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js"></script>
-      <SCRIPT TYPE="text/javascript" src='/assets/jquery.liquid-slider.min'></SCRIPT>
-      <link rel="stylesheet" type="text/css" href="/assets/liquid-slider.css">
-      <script>
-        $('#main-slider').liquidSlider();
-      </script>
-
-
-
-
-
-      <hr />
+      <% break %>
     <% end %>
   </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js"></script>
+<SCRIPT TYPE="text/javascript" src='/assets/jquery.liquid-slider.min'></SCRIPT>
+<link rel="stylesheet" type="text/css" href="/assets/liquid-slider.css">
+<script>
+  $('#main-slider').liquidSlider();
+</script>
 
 <script type="text/javascript">
   $(function() {

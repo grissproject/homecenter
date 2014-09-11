@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
     @imagen_portadas = ImagenPortada.all
-    @revista_mensuals = RevistaMensual.all
+    @portada_revistums = PortadaRevistum.all
   end
 end

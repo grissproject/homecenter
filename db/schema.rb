@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140831104724) do
+ActiveRecord::Schema.define(:version => 20140908142826) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -77,6 +77,14 @@ ActiveRecord::Schema.define(:version => 20140831104724) do
   create_table "panfletos_productos", :id => false, :force => true do |t|
     t.integer "panfleto_id"
     t.integer "producto_id"
+  end
+
+  create_table "portada_revista", :force => true do |t|
+    t.string   "titulo"
+    t.text     "descripcion"
+    t.boolean  "activo"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "productos", :force => true do |t|
@@ -152,8 +160,10 @@ ActiveRecord::Schema.define(:version => 20140831104724) do
     t.text     "descripcion"
     t.string   "estilo"
     t.boolean  "home"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "portada_revista_id"
+    t.integer  "portada_revistum_id"
   end
 
   create_table "revista_novios", :force => true do |t|

@@ -1,0 +1,18 @@
+<% if admin_signed_in? %>
+  <div style="float:right;"><%= link_to 'Nueva Revista', new_portada_revistum_path %></div>
+<% end %>
+
+<h1>Lista de Revistas</h1>
+<hr />
+
+<% @portada_revista.each do |portada_revistum| %>
+  <div style="font-size: 19px; font-weight: bold"><%= portada_revistum.titulo %></div>
+  <p><%= portada_revistum.descripcion %></p>
+  <%= link_to 'Ver Revista completa', portada_revistum %>
+  <% if admin_signed_in? %>
+     | 
+    <%= link_to 'Editar', edit_portada_revistum_path(portada_revistum) %> | 
+    <%= link_to 'Eliminar', portada_revistum, method: :delete, data: { confirm: 'Estas seguro?' } %>
+  <% end %>
+  <hr />
+<% end %>

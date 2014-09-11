@@ -25,6 +25,7 @@ class RevistaMensualsController < ApplicationController
   # GET /revista_mensuals/new.json
   def new
     @revista_mensual = RevistaMensual.new
+    @revista_mensual.portada_revistum_id = params[:portada_revistum_id]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +45,7 @@ class RevistaMensualsController < ApplicationController
 
     respond_to do |format|
       if @revista_mensual.save
-        format.html { redirect_to @revista_mensual, notice: 'Revista creada correctamente.' }
+        format.html { redirect_to @revista_mensual.portada_revistum, notice: 'Pagina creada correctamente.' }
         format.json { render json: @revista_mensual, status: :created, location: @revista_mensual }
       else
         format.html { render action: "new" }
@@ -60,7 +61,7 @@ class RevistaMensualsController < ApplicationController
 
     respond_to do |format|
       if @revista_mensual.update_attributes(params[:revista_mensual])
-        format.html { redirect_to @revista_mensual, notice: 'Revista actualizada correctamente.' }
+        format.html { redirect_to @revista_mensual.portada_revistum, notice: 'Pagina actualizada correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

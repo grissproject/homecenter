@@ -15,13 +15,13 @@
     <%= f.label :titulo %><br />
     <%= f.text_field :titulo %>
   </div>
-  <div class="field">
+  <!--<div class="field">
     <%= f.label :temporada %><br />
     <%= f.text_field :temporada %>
-  </div>
+  </div>-->
   <div class="field">
     <%= f.label :descripcion %><br />
-    <%= f.text_area :descripcion %>
+    <%= f.text_area :descripcion, :rows => 4 %>
   </div>
   
   <div class="form_row">
@@ -46,9 +46,9 @@
   </div>
 
   <div class="clear"></div>
-  <div class="field">
+  <!--<div class="field">
     <%= f.check_box :home %> Mostrar en Inicio?
-  </div>
+  </div>-->
 
   <h2>Lista de Productos</h2>
   <div id="stocks">
@@ -69,6 +69,7 @@
   </div>
 
   <div class="actions">
+    <%= f.hidden_field :portada_revistum_id, :value => @revista_mensual.portada_revistum_id %>
     <%= f.submit %>
   </div>
 <% end %>

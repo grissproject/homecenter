@@ -1,0 +1,29 @@
+<%= form_for(@portada_revistum) do |f| %>
+  <% if @portada_revistum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@portada_revistum.errors.count, "error") %> prohibited this portada_revistum from being saved:</h2>
+
+      <ul>
+      <% @portada_revistum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :titulo %><br />
+    <%= f.text_field :titulo %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br />
+    <%= f.text_area :descripcion, :rows => 4 %>
+  </div>
+  
+  <div class="field">
+    <%= f.check_box :activo %> <label>Mostrar en p&aacute;gina de inicio?</label>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

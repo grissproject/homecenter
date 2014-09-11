@@ -678,6 +678,8 @@ ul.items li a span {
 
 #admin_login { float: right; color: #555; margin-right: 10px; }
 
+#sale div { margin: 0; }
+
 /**
  * Common tags
  */
