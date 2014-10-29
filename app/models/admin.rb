@@ -5,7 +5,7 @@ class Admin < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username, :nombre, :apellido, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :username, :nombre, :apellido, :email, :password, :password_confirmation, :remember_me, :rol
   # attr_accessible :title, :body
 
   validates_uniqueness_of :username

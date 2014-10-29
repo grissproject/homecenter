@@ -8,11 +8,7 @@ Tesis::Application.routes.draw do
   resources :regalo_productos
 
 
-  get "admin/index"
-
-  get "admin/edit"
-
-  get "admin/new"
+  resources :admin
 
   resources :panfletos
 

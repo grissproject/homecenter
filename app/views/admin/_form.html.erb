@@ -1,6 +1,4 @@
-<h1>Editar Admin</h1>
-
-<%= form_for(@admin, :url => { :action => "update" }) do |f| %>
+<%= form_for(@admin, :url => { :action => "create" }) do |f| %>
   <% if @admin.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@admin.errors.count, "error") %> evitaron guardar al Admin:</h2>

@@ -1,11 +1,17 @@
 <h1>Panel de Configuraci&oacute;n</h1>
-
 <ul>
-  <li><%= link_to "Administrar Imagenes de Portada", imagen_portadas_path %></li>
-  <li><%= link_to "Revistas", portada_revista_path %></li>
-  <li><%= link_to "Panfletos", panfletos_path %></li>
+  <% if (current_admin.rol == 'Administrador' ||
+          current_admin.rol == 'Marketing') %>
+    <li><%= link_to "Administrar Imagenes de Portada", imagen_portadas_path %></li>
+    <li><%= link_to "Revistas", portada_revista_path %></li>
+    <li><%= link_to "Panfletos", panfletos_path %></li>
+  <% end %>
+
   <li><%= link_to "Productos", productos_path %></li>
   <li><%= link_to "Reservas Novios", reserva_regalo_novios_path %></li>
   <li><%= link_to "Reservas Productos", reserva_productos_path %></li>
-  <li><%= link_to "Administradores", admin_index_path %></li>
+  
+  <% if (current_admin.rol == 'Administrador') %>
+    <li><%= link_to "Administradores", admin_index_path %></li>
+  <% end %>
 </ul>

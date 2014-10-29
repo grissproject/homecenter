@@ -1,7 +1,7 @@
 <%= form_for(@revista_novio) do |f| %>
   <% if @revista_novio.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@revista_novio.errors.count, "error") %> prohibited this revista_novio from being saved:</h2>
+      <h2><%= pluralize(@revista_novio.errors.count, "error") %> al intentar guardar la revista:</h2>
 
       <ul>
       <% @revista_novio.errors.full_messages.each do |msg| %>

@@ -1,7 +1,7 @@
 <style type="text/css">
   th, td { border: 1px solid #CCC; }
 </style>
-<h1>Reservas realizadas</h1>
+<h1>Administradores</h1>
 
 <table>
   <tr>
@@ -18,9 +18,9 @@
     <td><%= admin.username %></td>
     <td><%= admin.email %></td>
     <th><%= admin.rol %></th>
-    <th><%= link_to 'Editar', admin_edit_path(admin) %></th>
+    <th><%= link_to 'Editar', edit_admin_path(admin) %></th>
   </tr>
 <% end %>
 </table>
 
-<%= link_to 'Nuevo Admin', admin_new_path %>
+<%= link_to 'Nuevo Admin', new_admin_path %>
