@@ -41,4 +41,12 @@ class AdminController < ApplicationController
 
   def destroy
   end
+
+  def deactivate
+    @admin = Admin.find(params[:format])
+    @admin.username = 'des__' + @admin.username
+    @admin.save
+    
+    redirect_to admin_index_path, notice: 'Admin desactivado correctamente.'
+  end
 end

@@ -3,4 +3,8 @@ class HomeController < ApplicationController
     @imagen_portadas = ImagenPortada.all
     @portada_revistums = PortadaRevistum.all
   end
+
+  def about
+    
+  end
 end

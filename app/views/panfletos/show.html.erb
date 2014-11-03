@@ -1,4 +1,8 @@
-<p id="notice"><%= notice %></p>
+<div style="float:right;">
+  <span onclick="mostrar_envio_mail()" style="text-decoration: underline; cursor: pointer;">Enviar por mail</span>
+</div>
+
+<p id="notice" style="clear: both;"><%= notice %></p>
 
 <div id="panfleto">
   <div id="titulo">    
@@ -22,6 +26,68 @@
     </ul>
   </div>
 
-
   <div class="clear"></div>
 </div>
+
+<div id="mail_invitation">
+  <div id="close_btn" onclick="$('#mail_invitation').hide();"></div>
+  Mails: &nbsp; <input id="para" type="text" value="" size="30"/><br />
+  Asunto: <input id="asunto" type="text" value="<%= @panfleto.titulo %>" /><br />
+  Mensaje: <br /><textarea id="msg" rows=6 cols=50><%= @panfleto.descripcion %></textarea><br />
+  <input type="button" value="Enviar" onclick="enviar_mail();" />
+</div>
+
+<script type="text/javascript">
+function mostrar_envio_mail() {
+    $('#mail_invitation').center();
+    $("#mail_invitation").show();
+}
+/**
+ * Oscurece la pagina entera
+ */
+function oscurecer_pagina() {
+    $('body').append('<div id="screen_black" style="position: absolute; left: 0; top: 0; background: #000;"></div>');
+    $('#screen_black').css({ opacity: 0.7, 'width':$(document).width(),'height':$(document).height()});
+    $('body').css({'overflow':'hidden'});
+}
+/**
+ * NO Oscurece la pagina entera
+ */
+function no_oscurecer_pagina() {
+    $('#screen_black').remove();
+    $('body').css({'overflow':'visible'});
+}
+
+function enviar_mail() {
+  para = $('#para').val();
+  titulo = $('#asunto').val();
+  msg = $('#msg').val();
+  url = '<%= request.url %>';
+  <% if current_user %>
+    de = '<%= current_user.email; %>';
+  <% else %>
+    de = 'info@homecenterfacil.com';
+  <% end %>
+  $.ajax({
+    url: 'http://ariellm.com/mail.php',
+    crossDomain: true,
+    data: {
+      para: para,
+      titulo: titulo,
+      msg: msg,
+      url: url,
+      de: de
+    }
+  })
+  $('#mail_invitation').hide();
+}
+
+jQuery.fn.center = function () {
+    this.css("position","absolute");
+    this.css("top", Math.max(0, (($(window).height() - this.outerHeight()) / 2) + 
+                                                $(window).scrollTop()) + "px");
+    this.css("left", Math.max(0, (($(window).width() - this.outerWidth()) / 2) + 
+                                                $(window).scrollLeft()) + "px");
+    return this;
+}
+</script>

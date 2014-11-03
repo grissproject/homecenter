@@ -2,7 +2,6 @@
 
 <div style="float: right;">
     <%= link_to 'Reservar', new_reserva_producto_path(:reserva_producto => { :producto_id => @producto.id}) %> | <span onclick="mostrar_envio_mail()" style="text-decoration: underline; cursor: pointer;">Sugerir por mail</span>
-    
 </div>
 
 <div style="float: left; margin-right: 30px;">
@@ -84,6 +83,8 @@ function enviar_mail() {
   url = '<%= request.url %>';
   <% if current_user %>
     de = '<%= current_user.email; %>';
+  <% else %>
+    de = 'info@homecenterfacil.com';
   <% end %>
   $.ajax({
     url: 'http://ariellm.com/mail.php',

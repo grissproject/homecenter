@@ -10,15 +10,20 @@
     <th>Mail</th>
     <th>Rol</th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @admins.each do |admin| %>
+  <% if admin.username[0, 5] == 'des__' 
+      next
+    end %>
   <tr>
     <td><%= admin.nombre %> <%= admin.apellido %></td>
     <td><%= admin.username %></td>
     <td><%= admin.email %></td>
     <th><%= admin.rol %></th>
     <th><%= link_to 'Editar', edit_admin_path(admin) %></th>
+    <th><%= link_to 'Desactivar', deactivate_admin_index_path(admin), :data => { :confirm => "Estas seguro?" } %></th>
   </tr>
 <% end %>
 </table>

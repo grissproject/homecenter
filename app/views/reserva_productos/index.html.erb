@@ -19,6 +19,7 @@
     <td><%= reserva_producto.mensaje %></td>
     <td><%= reserva_producto.user.nombre %> <%= reserva_producto.user.apellido %></td>
     <td><%= link_to 'Pagar', reserva_producto, method: :delete %></td>
+    <th><%= link_to 'Eliminar', reserva_producto, method: :delete, data: { confirm: 'Estas Seguro?' } %></th>
   </tr>
 <% end %>
 </table>

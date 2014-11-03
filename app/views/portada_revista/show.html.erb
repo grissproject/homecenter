@@ -1,7 +1,11 @@
-<% if admin_signed_in? %>
-  <div style="float:right;"><%= link_to 'Editar Revista', edit_portada_revistum_path(@portada_revistum) %>
-   | <%= link_to '+ Agregar pagina', new_revista_mensual_path(:portada_revistum_id => @portada_revistum.id) %></div>
-<% end %>
+<div style="float:right;">
+  <span onclick="mostrar_envio_mail()" style="text-decoration: underline; cursor: pointer;">Enviar por mail</span>
+  <% if admin_signed_in? && current_admin.rol != 'Cajero' %>
+     | 
+    <%= link_to 'Editar Revista', edit_portada_revistum_path(@portada_revistum) %>
+     | <%= link_to '+ Agregar pagina', new_revista_mensual_path(:portada_revistum_id => @portada_revistum.id) %>
+  <% end %>
+</div>
 
 <p id="notice"><%= notice %></p>
 
@@ -11,6 +15,21 @@
 </p>
 
 <div id="main-slider" class="liquid-slider">
+  <div id="<%= @portada_revistum.estilo %>">
+    <div class="revista_prods" style="padding-bottom: 20px;">
+      <h2 class="title">Portada</h2>
+
+      <div id="desc">
+        <%= @portada_revistum.texto1 %>
+      </div>
+      <div class="img"><%= image_tag @portada_revistum.imagen1.url() %></div>
+      <div id="desc">
+        <%= @portada_revistum.texto2 %>
+      </div>
+      <div class="img"><%= image_tag @portada_revistum.imagen2.url() %></div>
+    </div>
+  </div>
+
   <% i = 0; %>
   <% @portada_revistum.revista_mensual.each do |revista_mensual| %>
     <% i += 1; %>
@@ -46,4 +65,67 @@
 <link rel="stylesheet" type="text/css" href="/assets/liquid-slider.css">
 <script>
   $('#main-slider').liquidSlider();
+</script>
+
+<div id="mail_invitation">
+  <div id="close_btn" onclick="$('#mail_invitation').hide();"></div>
+  Mails: &nbsp; <input id="para" type="text" value="" size="30"/><br />
+  Asunto: <input id="asunto" type="text" value="<%= @portada_revistum.titulo %>" /><br />
+  Mensaje: <br /><textarea id="msg" rows=6 cols=50><%= @portada_revistum.descripcion %></textarea><br />
+  <input type="button" value="Enviar" onclick="enviar_mail();" />
+</div>
+
+<script type="text/javascript">
+function mostrar_envio_mail() {
+    $('#mail_invitation').center();
+    $("#mail_invitation").show();
+}
+/**
+ * Oscurece la pagina entera
+ */
+function oscurecer_pagina() {
+    $('body').append('<div id="screen_black" style="position: absolute; left: 0; top: 0; background: #000;"></div>');
+    $('#screen_black').css({ opacity: 0.7, 'width':$(document).width(),'height':$(document).height()});
+    $('body').css({'overflow':'hidden'});
+}
+/**
+ * NO Oscurece la pagina entera
+ */
+function no_oscurecer_pagina() {
+    $('#screen_black').remove();
+    $('body').css({'overflow':'visible'});
+}
+
+function enviar_mail() {
+  para = $('#para').val();
+  titulo = $('#asunto').val();
+  msg = $('#msg').val();
+  url = '<%= request.url %>';
+  <% if current_user %>
+    de = '<%= current_user.email; %>';
+  <% else %>
+    de = 'info@homecenterfacil.com';
+  <% end %>
+  $.ajax({
+    url: 'http://ariellm.com/mail.php',
+    crossDomain: true,
+    data: {
+      para: para,
+      titulo: titulo,
+      msg: msg,
+      url: url,
+      de: de
+    }
+  })
+  $('#mail_invitation').hide();
+}
+
+jQuery.fn.center = function () {
+    this.css("position","absolute");
+    this.css("top", Math.max(0, (($(window).height() - this.outerHeight()) / 2) + 
+                                                $(window).scrollTop()) + "px");
+    this.css("left", Math.max(0, (($(window).width() - this.outerWidth()) / 2) + 
+                                                $(window).scrollLeft()) + "px");
+    return this;
+}
 </script>

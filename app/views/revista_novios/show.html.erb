@@ -112,6 +112,8 @@ function enviar_mail() {
   url = '<%= request.url %>';
   <% if current_user %>
     de = '<%= current_user.email; %>';
+  <% else %>
+    de = 'info@homecenterfacil.com';
   <% end %>
   $.ajax({
     url: 'http://ariellm.com/mail.php',

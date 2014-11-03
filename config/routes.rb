@@ -8,7 +8,11 @@ Tesis::Application.routes.draw do
   resources :regalo_productos
 
 
-  resources :admin
+  resources :admin do
+    collection do
+      get :deactivate
+    end
+  end
 
   resources :panfletos
 
@@ -40,6 +44,7 @@ Tesis::Application.routes.draw do
   end
 
   get "home/index"
+  get "home/about"
 
   devise_for :users
 

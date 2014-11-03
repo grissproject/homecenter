@@ -11,6 +11,7 @@
     <th>Mensaje</th>
     <th>Monto</th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @reservas.each do |reserva| %>
@@ -29,6 +30,7 @@
               :revista_novio_id => reserva.revista_novio.id,
               :user_id => reserva.user.id },
             :reserva_regalo_novio_id => reserva.id) %></th>
+    <th><%= link_to 'Eliminar', reserva, method: :delete, data: { confirm: 'Estas Seguro?' } %></th>
   </tr>
 <% end %>
 </table>

@@ -12,6 +12,7 @@
   <li><%= link_to "Reservas Productos", reserva_productos_path %></li>
   
   <% if (current_admin.rol == 'Administrador') %>
+    <li><%= link_to "Clientes", user_index_path %></li>
     <li><%= link_to "Administradores", admin_index_path %></li>
   <% end %>
 </ul>

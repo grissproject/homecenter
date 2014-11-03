@@ -36,4 +36,14 @@ class ReservaRegaloNoviosController < ApplicationController
       end
     end
   end
+
+  def destroy
+    @producto = ReservaRegaloNovio.find(params[:id])
+    @producto.destroy
+
+    respond_to do |format|
+      format.html { redirect_to reserva_regalo_novios_path }
+      format.json { head :no_content }
+    end
+  end
 end

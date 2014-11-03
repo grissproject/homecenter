@@ -23,7 +23,50 @@
   <div class="field">
     <%= f.check_box :activo %> <label>Mostrar en p&aacute;gina de inicio?</label>
   </div>
+  
+  <h3>Portada</h3>
+  <div class="field">
+    Texto portada 1:<br />
+    <%= f.text_area :texto1, :rows => 4 %>
+  </div>
+  <div class="field">
+    Imagen 1:<br />
+    <%= f.file_field :imagen1 %>
+  </div>
+
+  <div class="field" style="margin-top: 30px;">
+    Texto portada 2:<br />
+    <%= f.text_area :texto2, :rows => 4 %>
+  </div>
+  <div class="field">
+    Imagen 2:<br />
+    <%= f.file_field :imagen2 %>
+  </div>
+
+  <div class="form_row" style="margin-top: 30px;">
+    <label for="estilo">Estilo portada:</label>
+    <br>
+    <div class="estilo_item">
+      <%= f.radio_button :estilo, 'fresh' %> Fresh
+      <%= image_tag 'bgs/fresh.jpg'%>
+    </div>
+    <div class="estilo_item">
+      <%= f.radio_button :estilo, 'peligro' %> Peligro
+      <%= image_tag 'bgs/peligro.jpg'%>
+    </div>
+    <div class="estilo_item">
+      <%= f.radio_button :estilo, 'explosion' %> Explosion
+      <%= image_tag 'bgs/explosion.jpg'%>
+    </div>
+    <div class="estilo_item">
+      <%= f.radio_button :estilo, 'lemon' %> Lemon
+      <%= image_tag 'bgs/lemon.jpg'%>
+    </div>
+  </div>
+
+  <div style="clear: both;">&nbsp;</div>
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Website template by freewebsitetemplates.com -->
 <html>
 <head>
   <meta charset="UTF-8">
@@ -16,9 +15,9 @@
         if admin_signed_in?
         %>
           <div id="admin_login">
-            <strong>Admin:</strong>
             <%= current_admin.nombre + ' ' + current_admin.apellido %>
-            <span>(<%= link_to "Salir", destroy_admin_session_path, :method => :delete %>)</span>
+            (<%= current_admin.rol %>)
+            <span><%= link_to "Salir", destroy_admin_session_path, :method => :delete %></span>
           </div>
         <% end %>
         <div id="logo">
@@ -28,6 +27,9 @@
           <ul id="primary">
             <li>
               <%= link_to "Inicio", home_index_path %>
+            </li>
+            <li>
+              <%= link_to "Nosotros", home_about_path %>
             </li>
             <li>
               <%= link_to "Novios", revista_novios_path %>
@@ -87,24 +89,28 @@
             <h5>Siguenos!</h5>
             <ul>
               <li>
-                <a href="#" target="_blank" class="facebook"></a>
-              </li>
-              <li>
-                <a href="#" target="_blank" class="twitter"></a>
-              </li>
-              <li>
-                <a href="#" target="_blank" class="linkin"></a>
+                <a href="http://facebook.com/homecenterfacil" target="_blank" class="facebook"></a>
               </li>
             </ul>
           </div>
-          <ul class="navigation">
+          <ul class="navigation" style="float: left">
             <li>
               <h5>Menu</h5>
               <%= link_to "Admin", new_admin_session_path %> 
             </li>
           </ul>
+          <div style="display: inline-block; color: #616b84; float: left">
+            <div>
+              Av. Uyuni Nº 1171 casi Puente Muyurina. <br />
+              (+591) 4-4222679 <br />
+              PO Box 2485 <br />
+              Cochabamba – Bolivia <br />
+            </div>
+          </div>
+          </ul>
+          <div style="clear: both;">&nbsp;</div>
           <p class="footnote">
-            &copy; Copyirght &copy; 2013. <%= link_to "Home Center", home_index_path %> Todos los derechos reservados.
+            &copy; Copyirght &copy; 2014. Home Center. Todos los derechos reservados.
           </p>
         </div>
       </div>

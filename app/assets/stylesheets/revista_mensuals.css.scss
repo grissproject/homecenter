@@ -58,22 +58,30 @@
 #fresh #titulo { font-family: 'Engagement', cursive; font-size: 68px; text-align: center; padding-top: 60px; }
 #fresh #temporada { color: #777; font-size: 0.8em; text-align: center; margin: 15px;  }
 #fresh #desc { clear: both; padding: 50px; margin-top: 20px; }
+#fresh .img { padding: 0 50px; margin-top: 0px; }
+#fresh .img img { max-width: 100%; }
 #fresh .stock-item { background-color: #FFF; padding: 3px; margin: 0 45px 60px 0; }
 
 #peligro { background: url(bgs/peligro.jpg); color: #fff; font-size: 19px; background-size:100% }
 #peligro #titulo { font-family: 'Engagement', cursive; font-size: 68px; text-align: center; padding-top: 60px; }
 #peligro #temporada { color: #ccc; font-size: 0.8em; text-align: center; margin: 15px;  }
 #peligro #desc { clear: both; padding: 50px; margin-top: 20px; }
+#peligro .img { padding: 0 50px; margin-top: 0px; }
+#peligro .img img { max-width: 100%; }
 #peligro .stock-item { background-color: #FFF; padding: 3px; margin: 0 45px 60px 0; }
 
 #explosion { background: url(bgs/explosion.jpg); color: #333; font-size: 19px; background-size:100% }
 #explosion #titulo { font-family: 'Engagement', cursive; font-size: 68px; text-align: center; padding-top: 60px; }
 #explosion #temporada { color: #777; font-size: 0.8em; text-align: center; margin: 15px;  }
 #explosion #desc { clear: both; padding: 50px; margin-top: 20px; }
+#explosion .img { padding: 0 50px; margin-top: 0px; }
+#explosion .img img { max-width: 100%; }
 #explosion .stock-item { background-color: #FFF; padding: 3px; margin: 0 45px 60px 0; }
 
 #lemon { background: url(bgs/lemon.jpg); color: #333; font-size: 19px; background-size:100% }
 #lemon #titulo { font-family: 'Engagement', cursive; font-size: 68px; text-align: center; padding-top: 60px; }
 #lemon #temporada { color: #777; font-size: 0.8em; text-align: center; margin: 15px;  }
 #lemon #desc { clear: both; padding: 50px; margin-top: 20px; }
+#lemon .img { padding: 0 50px; margin-top: 0px; }
+#lemon .img img { max-width: 100%; }
 #lemon .stock-item { background-color: #FFF; padding: 3px; margin: 0 45px 60px 0; }

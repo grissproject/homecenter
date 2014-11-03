@@ -1,4 +1,4 @@
-<% if admin_signed_in? %>
+<% if admin_signed_in? && current_admin.rol != 'Cajero' %>
   <div style="float:right;"><%= link_to 'Nueva Revista', new_portada_revistum_path %></div>
 <% end %>
 
@@ -9,7 +9,7 @@
   <div style="font-size: 19px; font-weight: bold"><%= portada_revistum.titulo %></div>
   <p><%= portada_revistum.descripcion %></p>
   <%= link_to 'Ver Revista completa', portada_revistum %>
-  <% if admin_signed_in? %>
+  <% if admin_signed_in? && current_admin.rol != 'Cajero' %>
      | 
     <%= link_to 'Editar', edit_portada_revistum_path(portada_revistum) %> | 
     <%= link_to 'Eliminar', portada_revistum, method: :delete, data: { confirm: 'Estas seguro?' } %>
