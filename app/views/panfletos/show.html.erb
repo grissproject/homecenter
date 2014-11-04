@@ -71,6 +71,7 @@ function enviar_mail() {
   $.ajax({
     url: 'http://ariellm.com/mail.php',
     crossDomain: true,
+    dataType: 'jsonp',
     data: {
       para: para,
       titulo: titulo,

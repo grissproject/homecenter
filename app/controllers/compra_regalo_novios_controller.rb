@@ -1,6 +1,6 @@
 class CompraRegaloNoviosController < ApplicationController
 
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
 
   def new
     @compra_regalo_novio = CompraRegaloNovio.new(params[:compra_regalo_novio])
