@@ -16,3 +16,10 @@ $cabeceras .= 'From: ' . $_GET['de'] . "\r\n";
 // Enviarlo
 mail($para, $titulo, $mensaje, $cabeceras);
 ?>
+<html>
+  <head></head>
+  <body>
+    Tu mail fue enviado correctamente a <?php echo $para; ?><br />
+    <button onclick="window.close();">Cerrar</button>
+  </body>
+</html>

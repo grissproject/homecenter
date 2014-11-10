@@ -68,18 +68,19 @@ function enviar_mail() {
   <% else %>
     de = 'info@homecenterfacil.com';
   <% end %>
-  $.ajax({
-    url: 'http://ariellm.com/mail.php',
-    crossDomain: true,
-    dataType: 'jsonp',
-    data: {
-      para: para,
-      titulo: titulo,
-      msg: msg,
-      url: url,
-      de: de
-    }
-  })
+  window.open('http://ariellm.com/mail.php?para=' + para + '&titulo=' + titulo + '&msg=' + msg + '&url=' + url + '&de=' + de);
+  // $.ajax({
+  //   url: 'http://ariellm.com/mail.php',
+  //   crossDomain: true,
+  //   dataType: 'jsonp',
+  //   data: {
+  //     para: para,
+  //     titulo: titulo,
+  //     msg: msg,
+  //     url: url,
+  //     de: de
+  //   }
+  // })
   $('#mail_invitation').hide();
 }
 
